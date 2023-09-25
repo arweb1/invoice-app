@@ -23,4 +23,4 @@ function Invoice() {
   )
 }
 
-export default Invoice
+export default Invoice 
