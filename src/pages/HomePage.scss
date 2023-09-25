@@ -106,15 +106,20 @@ $bg-dark: #141625;
 	align-items: flex-start; /* Выравнивание элементов по верхнему краю */
 	width: 100%;
 	height: 100%;
-	background: $bg-light;
 }
-
+#light.page {
+	background-color: $bg-light;
+}
+#dark.page {
+	background-color: $bg-dark;
+}
 
 main{
 	margin: 0 auto;
 	width: 80%;
 	height: 100%;
 }
+
 
 // BTN styled
 
@@ -141,11 +146,6 @@ main{
 .btn1:hover{
 	background: var(--02, #9277FF); 
 }
-
-#dark .controls {
-	background-color: #000;
-}
-
 
 /* LeftSideBar styles */
 
@@ -210,19 +210,35 @@ main{
 	margin-top: 80px; 
 
 	.controls-leftside{
+		.controls-leftside__tag {
+			#light & {
+			  color: $color-dark-gray;
+			}
+			#dark & {
+			  color: $color-light-gray;
+			}
+		  }
 		h2{
 			font-weight: 700;
 			font-size: 2.2rem;
 			letter-spacing: -1.125px; 
-			color: var(--08, #0C0E16);
 			margin-bottom: 5px;
 		}
+		
 		.invoices-counter{
 			font-weight: 500;
 			font-size: 0.8rem;
 			letter-spacing: -0.1px;
 			line-height: 15px; /* 115.385% */
 			color: var(--06, #888EB0);
+
+			#light & {
+				color: #888EB0;
+			}
+
+			#dark & {
+				color: #DFE3FA;
+			}
 		}
 	}
 	.controls-roghtside{
@@ -232,8 +248,14 @@ main{
 			font-size: 1rem;
 			font-weight: 700;
 			line-height: 15px;
-			color: var(--08, #0C0E16);
 			letter-spacing: -0.25px;
+
+			#light & {
+				color: #0C0E16;
+			}
+			#dark & {
+				color: #fff;
+			}
 		}
 		.new-invoice{
 			margin-left: 40px;
@@ -248,11 +270,16 @@ main{
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 8px;
-	background: #FFF;
-	box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
 	padding: 16px 32px;
 	margin-bottom: 16px;
-	&_id{
+	box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
+	#light & {
+		background: #FFF;
+	}
+	#dark & {
+		background: var(--03, #1E2139);
+	}
+	&__id{
 		h3{
 			font-weight: 700;
 			line-height: 15px;
@@ -263,55 +290,79 @@ main{
 				font-weight: 700;
 				line-height: 15px;
 			}
+			#light & {
+				color: #0C0E16;
+			}
+			#dark & {
+				color: #fff;
+			}
 		}
 	}
-	&_date{
+	&__date{
 		span{
 			color: var(--06, #888EB0);
 			font-size: 0.8rem;
 			font-weight: 500;
-			 
+			#light & {
+				color: #7E88C3;
+			}
+			#dark & {
+				color: #DFE3FA;
+			}
 		}
 	}
-	&_name{
+	&__name{
 		p{ 
 			color: var(--06, #888EB0);
 			font-size: 0.8rem;
 			font-weight: 500;
-			 
+			#light & {
+				color: #858BB2;
+			}
+			#dark & {
+				color: #FFFFFF;
+			}
 		}
 	}
-	&_value{
+	&__value{
 		span{ 
-			color: var(--08, #0C0E16);
 			font-size: 1rem;
 			font-weight: 700;
 			line-height: 24px; /* 160% */
 			letter-spacing: -0.25px;
+			#light & {
+				color: #0C0E16;
+			}
+			#dark & {
+				color: #FFF;
+			}
 		}
 	}
-	&_status{
+	&__status {
 		border-radius: 6px;
-		background: #f3fcf9;
+		background: rgba(51, 214, 159, 0.05); /* Уменьшаем только прозрачность фона */
 		padding: 14px 30px 11px 30px;
-		p{
-			
-			display: flex;
-			align-items: center;
-			color: #33D69F;
-			font-weight: 700;
-			font-size: 15px;
+	  
+		p {
+		  display: flex;
+		  align-items: center;
+		  color: #33D69F;
+		  font-weight: 700;
+		  font-size: 15px;
 		}
+	  
 		p::before {
-			content: "";
-			display: block;
-			width: 8px;
-			height: 8px;
-			background-color: #33D69F;
-			border-radius: 50%;
-			margin-right: 8px;
+		  content: "";
+		  display: block;
+		  width: 8px;
+		  height: 8px;
+		  background-color: #33D69F;
+		  border-radius: 50%;
+		  margin-right: 8px;
 		}
-	}
+	  }
+	  
+	  
 	
 	
 }

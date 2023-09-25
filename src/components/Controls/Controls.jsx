@@ -4,7 +4,7 @@ function Controls() {
   return (
     <div className="controls">
         <div className="controls-leftside text-content">
-            <h2>Invoices</h2>
+            <h2 className='controls-leftside__tag'>Invoices</h2>
             <p className="invoices-counter">There are 7 total invoices</p>
         </div>
         <div className="controls-roghtside">
@@ -19,3 +19,7 @@ function Controls() {
 }
 
 export default Controls;
+
+
+
+
