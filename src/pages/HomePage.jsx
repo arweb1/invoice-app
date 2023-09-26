@@ -1,6 +1,7 @@
 import LeftSidebar from "../components/Left-sidebar/Left-sidebar";
 import Controls from "../components/Controls/Controls";
 import InvoiceList from "../components/Invoices-list/Invoice-list";
+import NewInvoiceForm from "../components/New-invoice-form/NewInvoiceForm";
 import './HomePage.scss';
 
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +12,7 @@ function HomePage() {
   return (
     <div className="page" id={theme}>
         <LeftSidebar/>
+        <NewInvoiceForm/>
         <main>
             <Controls/>
             <InvoiceList/>

@@ -1,5 +1,6 @@
 import logo from '../../assets/logo.svg';
 import iconMoon from '../../assets/icon-moon.svg';
+import iconSun from '../../assets/icon-sun.svg'
 import imageAvatar from '../../assets/image-avatar.jpg';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +20,7 @@ function LeftSidebar() {
                 <img className="logo" src={logo} alt="logo"></img>
             </div>
             <div className="bottom-info">
-                <img src={iconMoon} alt="moon" className='themeIcon' onClick={() => toggleTheme()}/>
+                <img src={currentTheme === 'dark' ? iconSun : iconMoon} alt="moon" className='themeIcon' onClick={() => toggleTheme()}/>
                 <div className="profile">
                     <img src={imageAvatar} alt="avatar" className='avatar'/>
                 </div>
