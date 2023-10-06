@@ -385,6 +385,27 @@ main{
 		#dark & {
 			background-color: #141625;
 		}
+
+		.__adress-details{
+			display: flex;
+			justify-content: space-between;
+			margin-top: 25px;
+			div{
+				display: flex;
+				flex-direction: column;
+				max-width: 152px;
+			}
+		}
+		.newInvoiceForm__block-title{
+			margin-top: 49px;
+		}
+		.__client-details{
+			div{
+				display: flex;
+				flex-direction: column;
+				margin-top: 25px;
+			}
+		}
 	}
 	.newInvoiceForm__title{
 		font-size: 24px;
@@ -395,6 +416,7 @@ main{
 		span{
 			color: #888EB0
 		}
+		
 	}
 	&__block-title{
 		font-size: 15px;
@@ -402,12 +424,21 @@ main{
 		font-weight: 700;
 		margin-bottom: 24px;
 	}
-	.street{
-		label{
-			color: #7E88C3;
-			font-size: 13px;
-			font-weight: 500;
-			margin-bottom: 9px;
-		}
-	}//test
+	label{
+		color: #7E88C3;
+		font-size: 13px;
+		font-weight: 500;
+		margin-bottom: 9px;
+	}
+}
+
+.input{
+	border: 1px solid #DFE3FA;
+	border-radius: 4px;
+	padding: 20px 16px;
+	font-weight: 700;
+	line-height: 15px;
+}
+.full-width-input{
+	width: 100%;
 }

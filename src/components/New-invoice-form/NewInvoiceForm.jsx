@@ -43,7 +43,7 @@ function NewInvoiceForm() {
           country: '',
           clientName: '',
           email: '',
-          // Другие поля
+          
         }}
         onSubmit={handleSubmit}
       >
@@ -52,47 +52,49 @@ function NewInvoiceForm() {
             <h4 className='newInvoiceForm__block-title'>Bill From</h4>
             <div className='street'>
               <label htmlFor="street">Street Address</label>
-              <Field type="text" id="street" name="street" />
+              <Field type="text" id="street" name="street" className="input full-width-input" placeholder="Street"/>
             </div>
             <div className="__adress-details">
               <div>
                 <label htmlFor="city">City</label>
-                <Field type="text" id="city" name="city" />
+                <Field type="text" id="city" name="city" className="input"/>
               </div>
               <div>
                 <label htmlFor="postalCode">Post Code</label>
-                <Field type="text" id="postalCode" name="postalCode" />
+                <Field type="text" id="postalCode" name="postalCode" className="input"/>
               </div>
               <div>
                 <label htmlFor="country">Country</label>
-                <Field type="text" id="country" name="country" />
+                <Field type="text" id="country" name="country" className="input"/>
               </div>
             </div>
             <h4 className='newInvoiceForm__block-title'>Bill To</h4>
-            <div>
-              <label htmlFor="clientName">Client Name</label>
-              <Field type="text" id="clientName" name="clientName" />
-            </div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <Field type="email" id="email" name="email" />
-            </div>
-            <div className='street'>
-              <label htmlFor="street">Street Address</label>
-              <Field type="text" id="street" name="street" />
+            <div className="__client-details">
+              <div>
+                <label htmlFor="clientName">Client Name</label>
+                <Field type="text" id="clientName" name="clientName" className="input"/>
+              </div>
+              <div>
+                <label htmlFor="email">Email</label>
+                <Field type="email" id="email" name="email" className="input"/>
+              </div>
+              <div className='street'>
+                <label htmlFor="street">Street Address</label>
+                <Field type="text" id="street" className="input full-width-input" name="street" />
+              </div>
             </div>
             <div className="__adress-details">
               <div>
                 <label htmlFor="city">City</label>
-                <Field type="text" id="city" name="city" />
+                <Field type="text" id="city" name="city" className="input"/>
               </div>
               <div>
                 <label htmlFor="postalCode">Post Code</label>
-                <Field type="text" id="postalCode" name="postalCode" />
+                <Field type="text" id="postalCode" name="postalCode" className="input"/>
               </div>
               <div>
                 <label htmlFor="country">Country</label>
-                <Field type="text" id="country" name="country" />
+                <Field type="text" id="country" name="country" className="input"/>
               </div>
             </div> 
             <div className="__date-details">
