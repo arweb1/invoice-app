@@ -97,34 +97,14 @@ function NewInvoiceForm() {
                 <Field type="text" id="country" name="country" className="input"/>
               </div>
             </div> 
-            <div className="__adress-details">
+            <div className="__date-details">
               <div>
-                <label htmlFor="city">City</label>
-                <Field type="text" id="city" name="city" className="input"/>
+                <label>Invoice Date</label>
+                <Field type="date" id="invoice-date" name="invoice-date" className="input"/>
               </div>
-              <div>
-                <label htmlFor="postalCode">Post Code</label>
-                <Field type="text" id="postalCode" name="postalCode" className="input"/>
-              </div>
-              <div>
-                <label htmlFor="country">Country</label>
-                <Field type="text" id="country" name="country" className="input"/>
-              </div>
-            </div> 
-            <div className="__adress-details">
-              <div>
-                <label htmlFor="city">City</label>
-                <Field type="text" id="city" name="city" className="input"/>
-              </div>
-              <div>
-                <label htmlFor="postalCode">Post Code</label>
-                <Field type="text" id="postalCode" name="postalCode" className="input"/>
-              </div>
-              <div>
-                <label htmlFor="country">Country</label>
-                <Field type="text" id="country" name="country" className="input"/>
-              </div>
-            </div> 
+              <div></div>
+            </div>
+            
             <div className="__date-details">
               
             </div> 

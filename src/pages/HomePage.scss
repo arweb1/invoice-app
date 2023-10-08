@@ -443,3 +443,11 @@ main{
 .full-width-input{
 	width: 100%;
 }
+
+.__date-details{
+	div{
+		display: flex;
+		flex-direction: column;
+		margin-top: 50px;
+	}
+}
