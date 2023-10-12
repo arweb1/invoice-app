@@ -39,7 +39,7 @@ function NewInvoiceForm() {
           }}
           onSubmit={async (values, actions) => {
             // Обработка отправки данных формы
-            console.log(dispatch(addInvoice(values)));
+            dispatch(addInvoice(values))
           }}
         >
           <Form className="form">

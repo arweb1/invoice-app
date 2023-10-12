@@ -16,9 +16,7 @@ const formSlice = createSlice({
             state.isFormVisible = false
         },
         addInvoice(state, action){
-            console.log(action);
-            console.log('1')
-            // state.invoicesList.push(action)
+            state.invoicesList.push(action.payload)
         }
     }
 })
