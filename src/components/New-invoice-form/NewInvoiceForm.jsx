@@ -1,13 +1,13 @@
 import { Formik, Field, Form } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
-import { hideForm } from '../../store/form/form-slice';
+import { hideForm, addInvoice } from '../../store/form/form-slice';
 import * as Yup from "yup";
 
 import './NewInvoiceForm.scss'
 
 function NewInvoiceForm() {
-  const isFormVisible = useSelector((state) => state.formVisible.isFormVisible);
+  const isFormVisible = useSelector((state) => state.form.isFormVisible);
   const dispatch = useDispatch();
 
   const handleOutsideClick = (e) => {
@@ -26,7 +26,7 @@ function NewInvoiceForm() {
       document.removeEventListener('click', handleOutsideClick);
     };
   }, [isFormVisible, dispatch]);
-
+  
   if (isFormVisible) {
     return (
       <div className='newInvoiceForm'>
@@ -39,7 +39,7 @@ function NewInvoiceForm() {
           }}
           onSubmit={async (values, actions) => {
             // Обработка отправки данных формы
-            console.log(values);
+            console.log(dispatch(addInvoice(values)));
           }}
         >
           <Form className="form">

@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isFormVisible: false
+    isFormVisible: false,
+    invoicesList: []
 }
 
-const formIsVisibleSlice = createSlice({
+const formSlice = createSlice({
     name: 'form',
     initialState,
     reducers: {
@@ -13,10 +14,14 @@ const formIsVisibleSlice = createSlice({
         },
         hideForm(state, action){
             state.isFormVisible = false
+        },
+        addInvoice(state, action){
+            console.log(action);
+            console.log('1')
+            // state.invoicesList.push(action)
         }
-        
     }
 })
 
-export const formIsVisibleReducer = formIsVisibleSlice.reducer;
-export const {setFormVisible, hideForm} = formIsVisibleSlice.actions;
+export const formReducer = formSlice.reducer;
+export const {setFormVisible, hideForm, addInvoice} = formSlice.actions;
