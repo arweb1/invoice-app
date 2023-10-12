@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function InvoiceList() {
   const invoicesList = useSelector(state => state.form.invoicesList);
+  console.log(invoicesList)
 
   return (
     <div className='invoice-list'>

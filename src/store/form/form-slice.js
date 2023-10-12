@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment";
 
 const initialState = {
     isFormVisible: false,
@@ -16,7 +17,11 @@ const formSlice = createSlice({
             state.isFormVisible = false
         },
         addInvoice(state, action){
-            state.invoicesList.push(action.payload)
+            const newInvoice = {
+                ...action.payload,
+                createdAt: moment().format("YYYY-MM-DD HH:mm:ss")
+            }
+            state.invoicesList.push(newInvoice)
         }
     }
 })

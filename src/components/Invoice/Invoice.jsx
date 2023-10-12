@@ -1,6 +1,7 @@
 import arrowRight from '../../assets/icon-arrow-right.svg'
 
 function Invoice({data}) {
+
     const { billFromCity,
             billFromCountry, 
             billFromCountryCode, 
@@ -10,15 +11,18 @@ function Invoice({data}) {
             billToClientsName,
             billToCountry,
             billToPostCode,
-            billToStreetAdress} = data;
+            billToStreetAdress,
+            createdAt} = data;
+
     console.log(data);
-  return (
+
+return (
     <div className="single-invoice">
         <div className="single-invoice__id">
             <h3><span>#</span>RT3080</h3>
         </div>
         <div className="single-invoice__date">
-            <span>Due 19 Aug 2021</span>
+            <span>{createdAt}</span>
         </div>
         <div className="single-invoice__name">
             <p>{billToClientsName}</p>
