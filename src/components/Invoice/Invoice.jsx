@@ -2,24 +2,17 @@ import arrowRight from '../../assets/icon-arrow-right.svg'
 
 function Invoice({data}) {
 
-    const { billFromCity,
-            billFromCountry, 
-            billFromCountryCode, 
-            billFromStreet, 
-            billToCity,
-            billToClientsEmail,
+    const { id,
             billToClientsName,
-            billToCountry,
-            billToPostCode,
-            billToStreetAdress,
-            createdAt} = data;
+            createdAt,
+            status} = data;
 
     console.log(data);
 
 return (
     <div className="single-invoice">
         <div className="single-invoice__id">
-            <h3><span>#</span>RT3080</h3>
+            <h3 style={{textTransform: 'uppercase'}}><span>#</span>{id}</h3>
         </div>
         <div className="single-invoice__date">
             <span>{createdAt}</span>
@@ -31,7 +24,7 @@ return (
             <span>£ 1,800.90</span>
         </div>
         <div className="single-invoice__status">
-            <p>Paid</p>
+            <p>{status}</p>
         </div>
         <img src={arrowRight} alt="arrow-right" />
     </div>

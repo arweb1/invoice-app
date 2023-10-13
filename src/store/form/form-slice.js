@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
+import {v4 as uuidv4} from 'uuid'
 
 const initialState = {
     isFormVisible: false,
@@ -19,7 +20,9 @@ const formSlice = createSlice({
         addInvoice(state, action){
             const newInvoice = {
                 ...action.payload,
-                createdAt: moment().format("YYYY-MM-DD HH:mm:ss")
+                id: `${uuidv4().substr(0, 6)}`,
+                createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+                status: 'Pending'
             }
             state.invoicesList.push(newInvoice)
         }
