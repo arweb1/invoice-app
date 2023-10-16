@@ -4,7 +4,7 @@ import InvoiceList from "../components/Invoices-list/Invoice-list";
 import NewInvoiceForm from "../components/New-invoice-form/NewInvoiceForm";
 import './HomePage.scss';
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function HomePage() {
   const theme = useSelector(state => state.theme.theme)
