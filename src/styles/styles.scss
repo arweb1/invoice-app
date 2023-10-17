@@ -1,0 +1,68 @@
+.status-icon{
+    padding: 14px 19px 11px 18px;
+    border-radius: 6px;
+    p{
+        display: flex;
+        align-items: center;
+        margin-right: 0!important;
+        font-weight: 700;
+    }
+    p:before{
+        content: '';
+        border-radius: 50%;
+        display: inline-block; /* Добавьте этот стиль, чтобы ::before отобразился */
+        height: 8px;
+        width: 8px;
+        margin-right: 8px;
+    }
+    &.pending{
+        background-color: rgba(255, 143, 0, 0.0571);
+        p:before{
+            background-color: #FF8F00;
+        }
+        p{
+            color: #FF8F00;
+        } 
+    }
+    &.paid{
+        background-color: rgba(51, 214, 159, 0.0571);
+        p:before{
+            background-color: #33D69F;
+        }
+        p{
+            color: #33D69F;
+        }
+    }
+    &.draft{
+        background-color: rgba(55, 59, 83, 0.0571);
+        p:before{
+            background-color: #373B53;
+        }
+        p{
+            color: #373B53;
+        } 
+    }
+}
+
+
+.button{
+    padding: 18px 23px 15px 24px;
+    border-radius: 24px;
+    font-weight: 700;
+    margin-right: 8px;
+    &.light{
+        background-color: #F9FAFE;
+        color: #7E88C3;
+    }
+    &.red{
+        background-color: #EC5757;
+        color: #fff;
+    }
+    &.purple{
+        background-color: #7C5DFA;
+        color: #fff ;
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+}

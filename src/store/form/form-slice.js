@@ -4,7 +4,15 @@ import {v4 as uuidv4} from 'uuid'
 
 const initialState = {
     isFormVisible: false,
-    invoicesList: []
+    invoicesList: [
+        {
+            billToClientsName: 'Oleg',
+            id: `${uuidv4().substr(0, 6)}`,
+            createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+            status: 'Pending'
+        },
+        
+    ]
 }
 
 const formSlice = createSlice({

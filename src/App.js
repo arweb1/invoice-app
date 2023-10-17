@@ -1,5 +1,4 @@
-import HomePage from "./pages/HomePage";
-import EditInvoicePage from './pages/EditInvoicePage';
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   return (

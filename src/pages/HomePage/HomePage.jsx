@@ -1,8 +1,7 @@
-import LeftSidebar from "../components/Left-sidebar/Left-sidebar";
-import Controls from "../components/Controls/Controls";
-import InvoiceList from "../components/Invoices-list/Invoice-list";
-import EditInvoicePage from "./EditInvoicePage";
-import NewInvoiceForm from "../components/New-invoice-form/NewInvoiceForm";
+import LeftSidebar from "../../components/Left-sidebar/Left-sidebar";
+import InvoiceList from "../../components/Invoices-list/Invoice-list";
+import InvoiceInfoPage from "../InvoiceInfoPage/InvoiceInfoPage";
+import NewInvoiceForm from "../../components/New-invoice-form/NewInvoiceForm";
 import './HomePage.scss';
 
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
@@ -20,7 +19,7 @@ function HomePage() {
         <main>
             <Routes>
               <Route path="/" element={<InvoiceList/>}/>
-              <Route path="/edit/:id" element={<EditInvoicePage/>}/>
+              <Route path="/info/:id" element={<InvoiceInfoPage/>}/>
             </Routes>
         </main>
       </div>
