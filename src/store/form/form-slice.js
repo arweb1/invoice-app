@@ -11,6 +11,12 @@ const initialState = {
             createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
             status: 'Pending'
         },
+        {
+            billToClientsName: 'Artem',
+            id: `${uuidv4().substr(0, 6)}`,
+            createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+            status: 'Paid'
+        },
         
     ]
 }

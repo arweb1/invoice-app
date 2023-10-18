@@ -1,12 +1,39 @@
 import './InvoiceInfoPage.scss'
 
+import { useNavigate, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+ 
 function InvoiceInfoPage() {
+  const invoicesList = useSelector(state => state.form.invoicesList);
+
+  const { id } = useParams();
+  const currentInvoice = invoicesList.find(invoice => invoice.id === id);
+  const {
+    billFromCity,
+    billFromCountry,
+    billFromPostCode,
+    billFromStreet,
+    billToCity,
+    billToClientsEmail,
+    billToClientsName,
+    billToCountry,
+    billToPostCode,
+    billToStreetAdress,
+    createdAt,
+    status
+  } = currentInvoice;
+
+  const navigate = useNavigate();
+  const goBackPage = () => {
+    navigate(-1)
+  };
+  
   return (
     <>
       <div className="container">
         <div className="full-info_wrapper">
           <div className="goBack-button">
-            <button>Go back</button>
+            <button onClick={goBackPage}>Go back</button>
           </div>
           <div className="invoice-header">
             <div className="status">
@@ -24,22 +51,31 @@ function InvoiceInfoPage() {
           <div className="full-info">
             <div className="full-info-header">
               <div className="left-side">
-                <p>id</p>
-                <p>Graphic Design</p>
+                <p className='id'>#{id}</p>
+                <p className='tag'>Graphic Design</p>
               </div>
               <div className="right-side">
-                <p>19 Union Terrace
-                  London
-                  E1 3EZ
-                  United Kingdom
+                <p className='adress'>
+                  <span>
+                    {billFromStreet} 
+                  </span>
+                  <span>
+                    {billFromCity}
+                  </span>
+                  <span>
+                    {billFromPostCode}
+                  </span>
+                  <span>
+                    {billFromCountry}
+                  </span>
                 </p>
-              </div>
+              </div> 
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </>
   )
 }
 
-export default InvoiceInfoPage
+export default InvoiceInfoPage;
