@@ -2,7 +2,7 @@
 
 .container{
     margin: 0 auto;
-    max-width: 1010px;
+    width: 100%;
 }
 .full-info_wrapper{
     margin-top: 65px;
@@ -51,11 +51,31 @@
     box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
 }
 .full-info-header{
-    display: flex;  
-    justify-content: space-between;
+    display: grid;  
+    grid-template: repeat(3, auto)/repeat(6, 1fr);
+
+    .right-side{
+        grid-row: 1/2;
+        grid-column: -2/-1;
+        text-align: right;
+    }
+    .invoice-date-container{
+        grid-row: 2/3;
+    }
+    .payment-due-container{
+        grid-row: -2/-1;
+    }
+    .bill-to-container{
+        grid-row: 2/4;
+        grid-column: 3/6;
+    }
+    .sent-to-container{
+        grid-row: 2/3;
+        grid-column: 5/6;
+    }
 }
-.adress{
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-}
+// .adress{
+//     display: flex;
+//     flex-direction: column;
+//     text-align: right;
+// }

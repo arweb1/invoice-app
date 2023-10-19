@@ -20,7 +20,8 @@ function InvoiceInfoPage() {
     billToPostCode,
     billToStreetAdress,
     createdAt,
-    status
+    status,
+    invoiceDate
   } = currentInvoice;
 
   const navigate = useNavigate();
@@ -56,20 +57,40 @@ function InvoiceInfoPage() {
               </div>
               <div className="right-side">
                 <p className='adress'>
-                  <span>
+                  <br />
                     {billFromStreet} 
-                  </span>
-                  <span>
+                  <br />
                     {billFromCity}
-                  </span>
-                  <span>
+                  <br />                 
                     {billFromPostCode}
-                  </span>
-                  <span>
+                  <br />
                     {billFromCountry}
-                  </span>
                 </p>
               </div> 
+              <div className="invoice-date-container">
+                <h4>Invoice Date</h4>
+                {invoiceDate}
+              </div>
+              <div className="payment-due-container">
+                <h4>Payment Due</h4>
+                
+              </div>
+              <div className="bill-to-container">
+                <h4>Bill To</h4>
+                {billToClientsName}
+                <br />
+                  {billFromStreet} 
+                <br />
+                  {billFromCity}
+                <br />                 
+                  {billFromPostCode}
+                <br />
+                  {billFromCountry}
+              </div>
+              <div className="sent-to-container">
+                <h4>Sent To</h4>
+                {billToClientsEmail}
+              </div>
             </div>
           </div> 
         </div>
