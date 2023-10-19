@@ -52,11 +52,11 @@ function InvoiceInfoPage() {
           <div className="full-info">
             <div className="full-info-header">
               <div className="left-side">
-                <p className='id'>#{id}</p>
-                <p className='tag'>Graphic Design</p>
+                <p className='id'><span>#</span>{id}</p>
+                <p className='tag containerTitle'>Graphic Design</p>
               </div>
               <div className="right-side">
-                <p className='adress'>
+                <p className='adress containerTitle'>
                   <br />
                     {billFromStreet} 
                   <br />
@@ -68,16 +68,16 @@ function InvoiceInfoPage() {
                 </p>
               </div> 
               <div className="invoice-date-container">
-                <h4>Invoice Date</h4>
-                {invoiceDate}
+                <h4 className='containerTitle'>Invoice Date</h4>
+                <h3 className='bold'>{invoiceDate}</h3>
               </div>
               <div className="payment-due-container">
-                <h4>Payment Due</h4>
-                
+                <h4 className='containerTitle'>Payment Due</h4>
+                <h3 className='bold'>{}</h3>
               </div>
               <div className="bill-to-container">
-                <h4>Bill To</h4>
-                {billToClientsName}
+                <h4 className='containerTitle'>Bill To</h4>
+                <h3 className='bold'>{billToClientsName}</h3>
                 <br />
                   {billFromStreet} 
                 <br />
@@ -88,8 +88,8 @@ function InvoiceInfoPage() {
                   {billFromCountry}
               </div>
               <div className="sent-to-container">
-                <h4>Sent To</h4>
-                {billToClientsEmail}
+                <h4 className='containerTitle'>Sent To</h4>
+                <h3 className='bold'>{billToClientsEmail}</h3>
               </div>
             </div>
           </div> 
