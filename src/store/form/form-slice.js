@@ -8,13 +8,13 @@ const initialState = {
         {
             billToClientsName: 'Oleg',
             id: `${uuidv4().substr(0, 6)}`,
-            createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+            createdAt: moment().format("YYYY-MM-DD"),
             status: 'Pending'
         },
         {
             billToClientsName: 'Artem',
             id: `${uuidv4().substr(0, 6)}`,
-            createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+            createdAt: moment().format("YYYY-MM-DD"),
             status: 'Paid'
         },
         {
@@ -29,7 +29,7 @@ const initialState = {
             billToPostCode: "02144",
             billToStreetAdress : "sofii rusovoy 5b",
             invoiceDate: "2023-10-12",
-            createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+            createdAt: moment().format("YYYY-MM-DD"),
             id: `${uuidv4().substr(0, 6)}`,
             status: "Pending",
         }
@@ -51,13 +51,17 @@ const formSlice = createSlice({
             const newInvoice = {
                 ...action.payload,
                 id: `${uuidv4().substr(0, 6)}`,
-                createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+                createdAt: moment().format("YYYY-MM-DD"),
                 status: 'Pending'
             }
             state.invoicesList.push(newInvoice)
+        },
+        removeInvoice(state, action){
+            const invoiceIdToRemove = action.payload;
+            state.invoicesList = state.invoicesList.filter(invoice => invoice.id !== invoiceIdToRemove)
         }
     }
 })
 
 export const formReducer = formSlice.reducer;
-export const {setFormVisible, hideForm, addInvoice} = formSlice.actions;
+export const {setFormVisible, hideForm, addInvoice, removeInvoice} = formSlice.actions;

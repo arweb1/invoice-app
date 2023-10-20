@@ -6,9 +6,7 @@ function Invoice({data}) {
             billToClientsName,
             createdAt,
             status} = data;
-
-    console.log(data);
-
+    // console.log(data);
 return (
     <div className="single-invoice">
         <div className="single-invoice__id">
@@ -23,10 +21,12 @@ return (
         <div className="single-invoice__value">
             <span>£ 1,800.90</span>
         </div>
-        <div className="single-invoice__status">
+        <div className={`single-invoice__status status-icon ${status.toLowerCase()}`}>
             <p>{status}</p>
         </div>
-        <img src={arrowRight} alt="arrow-right" />
+        <div className="single-invoice__arrow">
+            <img src={arrowRight} alt="arrow-right" />
+        </div>
     </div>
   )
 }

@@ -1,13 +1,35 @@
 import './InvoiceInfoPage.scss'
 
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { removeInvoice } from '../../store/form/form-slice';
  
 function InvoiceInfoPage() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
   const invoicesList = useSelector(state => state.form.invoicesList);
 
+  const goBackPage = () => {
+    navigate(-1)
+  };
+
+  const [isInvoiceRemoved, setIsInvoiceRemoved] = useState(false);
+
+  useEffect(() => {
+    if(isInvoiceRemoved){
+      goBackPage()
+    }
+  }, [isInvoiceRemoved, navigate])
+  
   const { id } = useParams();
   const currentInvoice = invoicesList.find(invoice => invoice.id === id);
+
+  if (!currentInvoice) {
+    return null;
+  }
+
   const {
     billFromCity,
     billFromCountry,
@@ -24,11 +46,13 @@ function InvoiceInfoPage() {
     invoiceDate
   } = currentInvoice;
 
-  const navigate = useNavigate();
-  const goBackPage = () => {
-    navigate(-1)
-  };
   
+
+  const handleRemoveInvoice = (id) => {
+    dispatch(removeInvoice(id))
+    setIsInvoiceRemoved(true)
+  }
+
   return (
     <>
       <div className="container">
@@ -39,13 +63,13 @@ function InvoiceInfoPage() {
           <div className="invoice-header">
             <div className="status">
               <p>Status</p>
-              <div className='status-icon pending'>
-                <p>Pending</p>
+              <div className={`status-icon ${status.toLowerCase()}`}>
+                <p>{status}</p>
               </div>
             </div>
             <div className="buttons">
               <button className="button light">Edit</button>
-              <button className="button red">Delete</button>
+              <button className="button red" onClick={() => handleRemoveInvoice(id)}>Delete</button>
               <button className="button purple">Mark as Paid</button>
             </div>
           </div>
