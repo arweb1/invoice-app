@@ -4,12 +4,15 @@ import InvoiceInfoPage from "../InvoiceInfoPage/InvoiceInfoPage";
 import NewInvoiceForm from "../../components/New-invoice-form/NewInvoiceForm";
 import './HomePage.scss';
 
+import ModalWindow from "../../components/Modal-window/Modal-window";
+
+import { useState } from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import { useSelector } from "react-redux";
 
 function HomePage() {
-  const theme = useSelector(state => state.theme.theme)
+  const theme = useSelector(state => state.theme.theme);
   
   return (
     <Router>

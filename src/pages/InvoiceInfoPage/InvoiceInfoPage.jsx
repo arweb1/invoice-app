@@ -4,9 +4,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { removeInvoice } from '../../store/form/form-slice';
+import { removeInvoice, toggleStatus } from '../../store/form/form-slice';
+
+import ModalWindow from '../../components/Modal-window/Modal-window';
  
 function InvoiceInfoPage() {
+  const [modalActive, setModalActive] = useState(false);
+
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const invoicesList = useSelector(state => state.form.invoicesList);
@@ -53,6 +57,11 @@ function InvoiceInfoPage() {
     setIsInvoiceRemoved(true)
   }
 
+  const handleToggleStatus = (id) => {
+    dispatch(toggleStatus(id))
+  }
+
+
   return (
     <>
       <div className="container">
@@ -69,8 +78,8 @@ function InvoiceInfoPage() {
             </div>
             <div className="buttons">
               <button className="button light">Edit</button>
-              <button className="button red" onClick={() => handleRemoveInvoice(id)}>Delete</button>
-              <button className="button purple">Mark as Paid</button>
+              <button className="button red" onClick={() => setModalActive(true)}>Delete</button>
+              <button className="button purple" onClick={() => handleToggleStatus(id)}>Mark as Paid</button>
             </div>
           </div>
           <div className="full-info">
@@ -118,6 +127,15 @@ function InvoiceInfoPage() {
             </div>
           </div> 
         </div>
+        <ModalWindow active={modalActive} setActive={setModalActive}>
+          <h3>Confirm Deletion</h3>
+          <p>Are you sure you want to delete invoice <span>#{id}</span>? This action cannot be undone.</p>
+          <div className="btns">
+            <button className='button red' onClick={() => handleRemoveInvoice(id)}>Delete</button>
+            <button className='button light' onClick={() => setModalActive(false)}>Cancel</button>
+          </div>
+
+        </ModalWindow>
       </div>
     </>
   )

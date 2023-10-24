@@ -59,9 +59,16 @@ const formSlice = createSlice({
         removeInvoice(state, action){
             const invoiceIdToRemove = action.payload;
             state.invoicesList = state.invoicesList.filter(invoice => invoice.id !== invoiceIdToRemove)
+        },
+        toggleStatus(state, action){
+            const invoiceToToggle = action.payload;
+            const targetInvoice = state.invoicesList.find(invoice => invoice.id === invoiceToToggle);
+            if(targetInvoice){
+                targetInvoice.status = 'Paid'
+            }
         }
     }
 })
 
 export const formReducer = formSlice.reducer;
-export const {setFormVisible, hideForm, addInvoice, removeInvoice} = formSlice.actions;
+export const {setFormVisible, hideForm, addInvoice, removeInvoice, toggleStatus} = formSlice.actions;

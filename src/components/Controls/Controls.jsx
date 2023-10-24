@@ -1,17 +1,20 @@
 import plusImage from '../../assets/icon-plus.svg'
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFormVisible } from '../../store/form/form-slice';
 
 
 function Controls() {
   const dispatch = useDispatch();
 
+  const invoiceList = useSelector(state => state.form.invoicesList)
+  
+console.log(invoiceList);
   return (
     <div className="controls">
         <div className="controls-leftside text-content">
             <h2 className='controls-leftside__tag'>Invoices</h2>
-            <p className="invoices-counter">There are 7 total invoices</p>
+            <p className="invoices-counter">There are {invoiceList.length} total invoices</p>
         </div>
         <div className="controls-roghtside">
             <div className="filter">Filter by status</div>
