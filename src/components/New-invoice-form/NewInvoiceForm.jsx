@@ -102,7 +102,13 @@ function NewInvoiceForm() {
                 <Field className="input" type="date" id='date2' />
               </div>
             </div>
-            <button type="submit">Submit</button>
+            <div className="btns__container">
+              <button type="button" className='button light'>Discard</button>
+              <div className="">
+                <button type="submit" className='button dark'>Save as Draft</button>
+                <button type="submit" className='button purple'>Save & Send</button>
+              </div>
+            </div>
           </Form>
         </Formik>
       </div>
