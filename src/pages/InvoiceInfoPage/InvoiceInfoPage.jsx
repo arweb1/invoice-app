@@ -134,7 +134,6 @@ function InvoiceInfoPage() {
             <button className='button red' onClick={() => handleRemoveInvoice(id)}>Delete</button>
             <button className='button light' onClick={() => setModalActive(false)}>Cancel</button>
           </div>
-
         </ModalWindow>
       </div>
     </>

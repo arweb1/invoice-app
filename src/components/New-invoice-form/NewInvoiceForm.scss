@@ -1,3 +1,9 @@
+.newInvoiceForm{
+    max-height: 100%; /* Максимальная высота формы (например, 80% высоты видимой области) */
+    overflow: auto; /* Добавление скролла при необходимости */
+    background-color: #fff;
+}
+
 .input{
     border-radius: 4px;
     border: 1px solid #DFE3FA;
@@ -6,6 +12,7 @@
     padding-bottom: 15px;
     padding-left: 20px;
     padding-right: 16px;
+    margin-top: 9px;
 }
 .input-fullWidth{
     width: 100%;
@@ -30,9 +37,16 @@ label{
 }
 .form{
     max-width: 619px;
-    height: 100%;
     background-color: #fff;
     padding: 60px;
+    
+    h4{
+        color: #7C5DFA;
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 24px;
+        margin-top: 46px;
+    }
 
     .billFrom{
         display: flex;
@@ -43,7 +57,6 @@ label{
         justify-content: space-between;
         div{
             max-width: 152px;
-
             input{
                 max-width: 152px;
             }
@@ -51,6 +64,18 @@ label{
     }
 }
 
+.title{
+    color: #0C0E16;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+}
+.details, .dates{
+    margin-top: 25px;
+}
+.inputs-fullWidth .input{
+    margin-bottom: 25px;
+}
 .dates{
     display: flex;
     justify-content: space-between;
@@ -58,6 +83,6 @@ label{
         display: flex;
         flex-direction: column;
         width: 240px;
-    }//
+    }
 }
 

@@ -44,58 +44,61 @@ function NewInvoiceForm() {
         >
           <Form className="form">
             <div className="billFrom">
+              <h2 className='title'>New Invoice</h2>
               <div>
-                <label htmlFor="billFromStreet">Street Adress</label>
+                <h4>Bill From</h4>
+                <label htmlFor="billFromStreet" className='label'>Street Adress</label>
                 <Field className="input input-fullWidth" id="billFromStreet" name="billFromStreet" type="text" />
               </div>
               <div className="details">
                 <div>
-                  <label htmlFor="billFromCity">City</label>
+                  <label htmlFor="billFromCity" className='label'>City</label>
                   <Field className="input" id="billFromCity" name="billFromCity" type="text" />
                 </div>
                 <div>
-                  <label htmlFor="billFromPostCode">Post Code</label>
+                  <label htmlFor="billFromPostCode" className='label'>Post Code</label>
                   <Field className="input" id="billFromPostCode" name="billFromPostCode" type="text" />
                 </div>
                 <div>
-                  <label htmlFor="billFromCountry">Country</label>
+                  <label htmlFor="billFromCountry" className='label'>Country</label>
                   <Field className="input" id="billFromCountry" name="billFromCountry" type="text" />
                 </div>
               </div>
             </div>
             <div className="billTo">
+              <h4>Bill To</h4>
               <div className='inputs-fullWidth'>
-                <label htmlFor="billToClientsName">Client’s Name</label>
+                <label htmlFor="billToClientsName" className='label'>Client’s Name</label>
                 <Field className="input input-fullWidth" id="billToClientsName" name="billToClientsName" type="text" />
 
-                <label htmlFor="billToClientsEmail">Client’s Email</label>
+                <label htmlFor="billToClientsEmail" className='label'>Client’s Email</label>
                 <Field className="input input-fullWidth" id="billToClientsEmail" name="billToClientsEmail" type="email" />
 
-                <label htmlFor="billTo">Street Adress</label>
+                <label htmlFor="billTo" className='label'>Street Adress</label>
                 <Field className="input input-fullWidth" id="billToStreetAdress" name="billToStreetAdress" type="text" />
               </div>
               <div className="details">
                 <div>
-                  <label htmlFor="billTo">City</label>
+                  <label htmlFor="billTo" className='label'>City</label>
                   <Field className="input" id="billToCity" name="billToCity" type="text" />
                 </div>
                 <div>
-                  <label htmlFor="billTo">Post Code</label>
+                  <label htmlFor="billTo" className='label'>Post Code</label>
                   <Field className="input" id="billToPostCode" name="billToPostCode" type="text" />
                 </div>
                 <div>
-                  <label htmlFor="billTo">Country</label>
+                  <label htmlFor="billTo" className='label'>Country</label>
                   <Field className="input" id="billToCountry" name="billToCountry" type="text" />
                 </div>
               </div>
             </div>
             <div className="dates">
               <div>
-                <label htmlFor="invoiceDate">Invoice Date</label>
+                <label htmlFor="invoiceDate" className='label'>Invoice Date</label>
                 <Field className="input" type="date" id='date' />
               </div>
               <div>
-                <label htmlFor="invoiceDate">Invoice Date</label>
+                <label htmlFor="invoiceDate" className='label'>Invoice Date</label>
                 <Field className="input" type="date" id='date2' />
               </div>
             </div>
