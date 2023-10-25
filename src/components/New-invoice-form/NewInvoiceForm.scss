@@ -1,7 +1,7 @@
 @import '../../styles/styles.scss';
 
 .newInvoiceForm{
-    max-height: 100%; /* Максимальная высота формы (например, 80% высоты видимой области) */
+    max-height: 100vh; /* Максимальная высота формы (например, 80% высоты видимой области) */
     overflow: auto; /* Добавление скролла при необходимости */
     background-color: #fff;
 }
@@ -89,7 +89,14 @@ label{
 }
 
 .btns__container{
+    position: fixed;
+    bottom: 0px;
     display: flex;
     justify-content: space-between;
-    margin-top: 40px;
+    background-color: #fff;
+    height: 50px;
+    width: 499px;
+    // display: flex;
+    // justify-content: space-between;
+    // margin-top: 40px;
 }

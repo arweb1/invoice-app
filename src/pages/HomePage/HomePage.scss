@@ -171,6 +171,10 @@ main{
 			background-position: center;
 			width: 100px; /* Ширина и высота SVG */
 			height: 100px;
+
+			&:hover{
+				cursor: pointer;
+			}
 		}
 		.logo{
 			width: 40px;

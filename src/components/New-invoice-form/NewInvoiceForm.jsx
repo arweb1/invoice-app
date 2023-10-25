@@ -102,8 +102,27 @@ function NewInvoiceForm() {
                 <Field className="input" type="date" id='date2' />
               </div>
             </div>
+            <div className="items-list">
+              <h3>Item List</h3>
+              <div className="item-content">
+                <div className="item-content__name">
+                  <p>Item Name</p>
+                  <Field className="input" id="productName" name="productName" type="text"/>
+                </div>
+                <div className="item-content__qty">
+                  <p>Qty.</p>
+                    <Field className="input" id="pructQty" name="pructQty" type="number"/>
+                  </div>
+                <div className="item-content__price">
+
+                </div>
+                <div className="item-content__total">
+
+                </div>
+              </div>
+            </div>
             <div className="btns__container">
-              <button type="button" className='button light'>Discard</button>
+              <button type="button" className='button light' onClick={() => dispatch(hideForm())}>Discard</button>
               <div className="">
                 <button type="submit" className='button dark'>Save as Draft</button>
                 <button type="submit" className='button purple'>Save & Send</button>
