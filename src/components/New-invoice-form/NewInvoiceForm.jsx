@@ -4,7 +4,8 @@ import { useEffect, useState, useRef } from 'react';
 import { hideForm, addInvoice } from '../../store/form/form-slice';
 import * as Yup from "yup";
 
-import './NewInvoiceForm.scss'
+import './NewInvoiceForm.scss';
+import trash from '../../assets/icon-delete.svg'
 
 function NewInvoiceForm() {
   const isFormVisible = useSelector((state) => state.form.isFormVisible);
@@ -26,7 +27,7 @@ function NewInvoiceForm() {
       document.removeEventListener('click', handleOutsideClick);
     };
   }, [isFormVisible, dispatch]);
-  
+
   if (isFormVisible) {
     return (
       <div className='newInvoiceForm'>
@@ -35,7 +36,8 @@ function NewInvoiceForm() {
             billFromStreet: '',
             billFromCity: '',
             billFromPostCode: '',
-            billFromCountry: ''
+            billFromCountry: '',
+            productTotal: '0.00'
           }}
           onSubmit={async (values, actions) => {
             // Обработка отправки данных формы
@@ -107,18 +109,26 @@ function NewInvoiceForm() {
               <div className="item-content">
                 <div className="item-content__name">
                   <p>Item Name</p>
-                  <Field className="input" id="productName" name="productName" type="text"/>
+                  <Field className="input" id="productName" name="productName" type="text" />
                 </div>
                 <div className="item-content__qty">
                   <p>Qty.</p>
-                    <Field className="input" id="pructQty" name="pructQty" type="number"/>
-                  </div>
+                  <Field className="input" id="productQty" name="productQty" type="number" />
+                </div>
                 <div className="item-content__price">
-
+                  <p>Price</p>
+                  <Field className="input" id="prodctPrice" name="productPrice" type="number" />
                 </div>
                 <div className="item-content__total">
-
+                  <p>Total</p>
+                  <Field className="input total" id="productTotal" readOnly name="productTotal" type="number"/>
                 </div>
+                <div className="item-content__remove productRemove">
+                  <img className="trash" src={trash} alt="trash" />
+                </div>
+              </div>
+              <div className="item-list-button">
+                <button>+ Add New Item</button>
               </div>
             </div>
             <div className="btns__container">
@@ -130,7 +140,7 @@ function NewInvoiceForm() {
             </div>
           </Form>
         </Formik>
-      </div>
+      </div >
     );
   }
   return null;

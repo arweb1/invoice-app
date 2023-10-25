@@ -2,7 +2,7 @@
 
 .newInvoiceForm{
     max-height: 100vh; /* Максимальная высота формы (например, 80% высоты видимой области) */
-    overflow: auto; /* Добавление скролла при необходимости */
+    overflow-y: scroll; /* Добавление скролла при необходимости */
     background-color: #fff;
 }
 
@@ -99,4 +99,84 @@ label{
     // display: flex;
     // justify-content: space-between;
     // margin-top: 40px;
+}
+
+.items-list{
+    h3{
+        margin-top: 35px;
+        margin-bottom: 14px;
+        color: #777F98;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 32px; /* 177.778% */
+        letter-spacing: -0.375px;
+    }
+    p{
+        color: var(--07, #7E88C3);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 15px; /* 115.385% */
+        letter-spacing: -0.1px;
+    }
+    .input{
+        color: var(--08, #0C0E16);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 15px; /* 100% */
+        letter-spacing: -0.25px;
+        
+        &.total{
+            border: 0!important
+        }
+    }
+}
+
+.item-content{
+    display: grid;
+    grid-template-columns: 5fr 2fr 3fr 3fr 1fr;
+    align-items: center;
+    max-width: 100%;
+    grid-column-gap: 16px;
+
+    .input{
+        width: 100%;
+    }
+
+    &__name{
+        grid-column: 1/2;
+    }
+    &__qty{
+        grid-column: 2/3;
+    }
+    &__price{
+        grid-column: 3/4;
+    }
+    &__total{
+        grid-column: 4/5;
+    }
+    &__remove{
+        grid-column: -2/-1;
+        align-self: flex-end;
+        margin-bottom: 24px;
+        cursor: pointer;
+        justify-self: flex-end;
+    }
+}
+
+.productRemove{
+    width: 13px;
+    height: 16px;
+}
+.item-list-button{
+    margin-top: 16px;
+    button{
+        color: var(--07, #7E88C3);
+        font-size: 15px;
+        font-weight: 700;
+        width: 100%;
+        border-radius: 24px;
+        background: var(--05, #DFE3FA);
+        padding-top: 18px;
+        padding-bottom: 15px;
+    }
 }
