@@ -1,9 +1,12 @@
 @import '../../styles/styles.scss';
 
 .newInvoiceForm{
-    max-height: 100vh; /* Максимальная высота формы (например, 80% высоты видимой области) */
-    overflow-y: scroll; /* Добавление скролла при необходимости */
-    background-color: #fff;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    margin-left: 100px;
+    background: rgba(0, 0, 0, .4984);
 }
 
 .input{
@@ -28,20 +31,12 @@ label{
     letter-spacing: -0.1px;
     margin-bottom: 9px;
 }
-.newInvoiceForm{
-    position: absolute;
-    z-index: 999;
-    min-width: 100%;
-    height: 100%;
-    margin-left: 100px;
-    background: rgba(0, 0, 0, .4984);
-
-}
 .form{
     max-width: 619px;
     background-color: #fff;
     padding: 60px;
-    
+    height: 100%;
+    overflow-y: scroll; /* Добавление скролла при необходимости */
     h4{
         color: #7C5DFA;
         font-weight: 700;
