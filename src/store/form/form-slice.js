@@ -32,7 +32,9 @@ const initialState = {
             createdAt: moment().format("YYYY-MM-DD"),
             id: `${uuidv4().substr(0, 6)}`,
             status: "Pending",
-
+            productName: ['product', 'second prodfuct', 'second product'],
+            productPrice:[20, 200, 10],
+            productQty: [4, 2, 12]
         }
         
     ]

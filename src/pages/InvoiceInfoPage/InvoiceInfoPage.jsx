@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { removeInvoice, toggleStatus } from '../../store/form/form-slice';
 
 import ModalWindow from '../../components/Modal-window/Modal-window';
- 
+
 function InvoiceInfoPage() {
   const [modalActive, setModalActive] = useState(false);
 
@@ -22,11 +22,11 @@ function InvoiceInfoPage() {
   const [isInvoiceRemoved, setIsInvoiceRemoved] = useState(false);
 
   useEffect(() => {
-    if(isInvoiceRemoved){
+    if (isInvoiceRemoved) {
       goBackPage()
     }
   }, [isInvoiceRemoved, navigate])
-  
+
   const { id } = useParams();
   const currentInvoice = invoicesList.find(invoice => invoice.id === id);
 
@@ -50,7 +50,7 @@ function InvoiceInfoPage() {
     invoiceDate
   } = currentInvoice;
 
-  
+
 
   const handleRemoveInvoice = (id) => {
     dispatch(removeInvoice(id))
@@ -91,41 +91,60 @@ function InvoiceInfoPage() {
               <div className="right-side">
                 <p className='adress containerTitle'>
                   <br />
-                    {billFromStreet} 
+                  {billFromStreet}
                   <br />
-                    {billFromCity}
-                  <br />                 
-                    {billFromPostCode}
+                  {billFromCity}
                   <br />
-                    {billFromCountry}
+                  {billFromPostCode}
+                  <br />
+                  {billFromCountry}
                 </p>
-              </div> 
+              </div>
               <div className="invoice-date-container">
                 <h4 className='containerTitle'>Invoice Date</h4>
                 <h3 className='bold'>{invoiceDate}</h3>
               </div>
               <div className="payment-due-container">
                 <h4 className='containerTitle'>Payment Due</h4>
-                <h3 className='bold'>{}</h3>
+                <h3 className='bold'>{ }</h3>
               </div>
               <div className="bill-to-container">
                 <h4 className='containerTitle'>Bill To</h4>
                 <h3 className='bold'>{billToClientsName}</h3>
                 <br />
-                  {billFromStreet} 
+                {billFromStreet}
                 <br />
-                  {billFromCity}
-                <br />                 
-                  {billFromPostCode}
+                {billFromCity}
                 <br />
-                  {billFromCountry}
+                {billFromPostCode}
+                <br />
+                {billFromCountry}
               </div>
               <div className="sent-to-container">
                 <h4 className='containerTitle'>Sent To</h4>
                 <h3 className='bold'>{billToClientsEmail}</h3>
               </div>
             </div>
-          </div> 
+            <div className="total">
+              <div className="total-container">
+                <p className='label-name'>Item Name</p>
+                <p className='label-qty'>Qty.</p>
+                <p className='label-price'>Price</p>
+                <p className='label-total'>Total</p>
+                <div className="total-item">
+                  <p className='name'>Phone</p>
+                  <p className='qty'>2</p>
+                  <p className='price'>1000</p>
+                  <p className='total-price'>$ {2000}</p>
+                </div> 
+              </div> 
+              <div className="grand-total">
+                  <p>Amount Due</p>
+                  <span>$ 556</span>
+                </div>
+            </div>
+          </div>
+
         </div>
         <ModalWindow active={modalActive} setActive={setModalActive}>
           <h3>Confirm Deletion</h3>
