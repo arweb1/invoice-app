@@ -14,6 +14,7 @@ function InvoiceInfoPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const invoicesList = useSelector(state => state.form.invoicesList);
+  
 
   const goBackPage = () => {
     navigate(-1)
@@ -47,10 +48,25 @@ function InvoiceInfoPage() {
     billToStreetAdress,
     createdAt,
     status,
-    invoiceDate
+    invoiceDate,
+    productName,
+    productPrice,
+    productQty
   } = currentInvoice;
 
+  const calculateItemTotal = (qty, price) => {
+    return qty * price
+  }
 
+  const calculateTotalAmount = () => {
+    return productName.reduce((total, _, index) => {
+      const qty = productQty[index];
+      const price = productPrice[index];
+      const itemTotal = qty * price;
+      return total + itemTotal;
+    }, 0);
+  }
+  
 
   const handleRemoveInvoice = (id) => {
     dispatch(removeInvoice(id))
@@ -131,16 +147,18 @@ function InvoiceInfoPage() {
                 <p className='label-qty'>Qty.</p>
                 <p className='label-price'>Price</p>
                 <p className='label-total'>Total</p>
-                <div className="total-item">
-                  <p className='name'>Phone</p>
-                  <p className='qty'>2</p>
-                  <p className='price'>1000</p>
-                  <p className='total-price'>$ {2000}</p>
+                {productName.map((product, index) => (
+                  <div className="total-item">
+                  <p className='name'>{product}</p>
+                  <p className='qty'>{productQty[index]}</p>
+                  <p className='price'>{productPrice[index]}</p>
+                  <p className='total-price'>$ {calculateItemTotal(productQty[index], productPrice[index])}</p>
                 </div> 
+                ))}
               </div> 
               <div className="grand-total">
                   <p>Amount Due</p>
-                  <span>$ 556</span>
+                  <span>$ {calculateTotalAmount()}</span>
                 </div>
             </div>
           </div>
