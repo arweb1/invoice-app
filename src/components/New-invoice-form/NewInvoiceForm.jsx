@@ -8,25 +8,56 @@ import './NewInvoiceForm.scss';
 import trash from '../../assets/icon-delete.svg'
 
 function NewInvoiceForm() {
+  const [productCount, setProductCount] = useState(1);
+  const [products, setProducts] = useState([
+    { productName: '', productQty: 0, productPrice: 0, productTotal: 0 },
+  ]);
+  const [productData, setProductData] = useState([])
+
   const isFormVisible = useSelector((state) => state.form.isFormVisible);
   const dispatch = useDispatch();
 
   const handleOutsideClick = (e) => {
     if (isFormVisible) {
       const modal = document.querySelector('.form');
-      const btn = document.querySelector('.btn1')
+      const btn = document.querySelector('.btn1');
+      
       if (modal && !modal.contains(e.target) && !btn.contains(e.target)) {
         dispatch(hideForm());
       }
     }
   };
+  
 
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
+    
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
   }, [isFormVisible, dispatch]);
+
+  const productList = Array.from({ length: productCount })
+
+  const addNewProduct = () => {
+    setProductCount(productCount + 1);
+  }
+
+  const removeProduct = (idToRemove, e) => {
+    e.stopPropagation()
+    const updatedList = [...productList];
+    updatedList.splice(idToRemove, 1);
+    setProductCount(productCount - 1);
+    // If you want to update the productList, you may need to set it here.
+    // setProductList(updatedList);
+  }
+  
+
+  
+  const calculateTotal = (qty, price) => {
+    return qty * price
+  } 
+
 
   if (isFormVisible) {
     return (
@@ -37,7 +68,8 @@ function NewInvoiceForm() {
             billFromCity: '',
             billFromPostCode: '',
             billFromCountry: '',
-            productTotal: '0.00'
+            qty: '',
+            price: ''
           }}
           onSubmit={async (values, actions) => {
             // Обработка отправки данных формы
@@ -106,29 +138,31 @@ function NewInvoiceForm() {
             </div>
             <div className="items-list">
               <h3>Item List</h3>
-              <div className="item-content">
-                <div className="item-content__name">
-                  <p>Item Name</p>
-                  <Field className="input" id="productName" name="productName" type="text" />
+              {productList.map((_, index) => (
+                <div className="item-content" key={index}>
+                  <div className="item-content__name">
+                    <p>Item Name</p>
+                    <Field className="input" name={`productName[${index}]`} type="text" />
+                  </div>
+                  <div className="item-content__qty">
+                    <p>Qty.</p>
+                    <Field className="input" name={`productQty[${index}]`} type="number" />
+                  </div>
+                  <div className="item-content__price">
+                    <p>Price</p>
+                    <Field className="input" name={`productPrice[${index}]`} type="number" />
+                  </div>
+                  <div className="item-content__total">
+                    <p>Total</p>
+                    <Field className="input total" name={`productTotal[${index}]`} readOnly type="number" />
+                  </div>
+                  <div className="item-content__remove productRemove" onClick={(e) => removeProduct(index, e)}>
+                    <img className="trash" src={trash} alt="trash" />
+                  </div>
                 </div>
-                <div className="item-content__qty">
-                  <p>Qty.</p>
-                  <Field className="input" id="productQty" name="productQty" type="number" />
-                </div>
-                <div className="item-content__price">
-                  <p>Price</p>
-                  <Field className="input" id="prodctPrice" name="productPrice" type="number" />
-                </div>
-                <div className="item-content__total">
-                  <p>Total</p>
-                  <Field className="input total" id="productTotal" readOnly name="productTotal" type="number"/>
-                </div>
-                <div className="item-content__remove productRemove">
-                  <img className="trash" src={trash} alt="trash" />
-                </div>
-              </div>
+              ))}
               <div className="item-list-button">
-                <button>+ Add New Item</button>
+                <button type="button" onClick={() => addNewProduct()}>+ Add New Item</button>
               </div>
             </div>
             <div className="btns__container">

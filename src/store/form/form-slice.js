@@ -32,6 +32,7 @@ const initialState = {
             createdAt: moment().format("YYYY-MM-DD"),
             id: `${uuidv4().substr(0, 6)}`,
             status: "Pending",
+
         }
         
     ]
@@ -41,7 +42,7 @@ const formSlice = createSlice({
     name: 'form',
     initialState,
     reducers: {
-        setFormVisible(state, action){
+        showForm(state, action){
             state.isFormVisible = true
         },
         hideForm(state, action){
@@ -71,4 +72,4 @@ const formSlice = createSlice({
 })
 
 export const formReducer = formSlice.reducer;
-export const {setFormVisible, hideForm, addInvoice, removeInvoice, toggleStatus} = formSlice.actions;
+export const {showForm, hideForm, addInvoice, removeInvoice, toggleStatus} = formSlice.actions;

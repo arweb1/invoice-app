@@ -1,7 +1,7 @@
 import plusImage from '../../assets/icon-plus.svg'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setFormVisible } from '../../store/form/form-slice';
+import { showForm } from '../../store/form/form-slice';
 
 
 function Controls() {
@@ -18,7 +18,7 @@ console.log(invoiceList);
         </div>
         <div className="controls-roghtside">
             <div className="filter">Filter by status</div>
-            <button className="new-invoice btn1" onClick={() => dispatch(setFormVisible())}>
+            <button className="new-invoice btn1" onClick={() => dispatch(showForm())}>
                 <img src={plusImage} alt="plus" />
                 <p>New Invoice</p>
             </button>
