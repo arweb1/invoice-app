@@ -120,7 +120,7 @@ label{
         line-height: 15px; /* 100% */
         letter-spacing: -0.25px;
         
-        &.total{
+        &.totalPrice{
             border: 0!important
         }
     }
@@ -272,4 +272,7 @@ label{
         line-height: 32px; /* 133.333% */
         letter-spacing: -0.5px;
     }
+}
+.error{
+    color: red;
 }
