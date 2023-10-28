@@ -1,8 +1,9 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
 import { hideForm, addInvoice } from '../../store/form/form-slice';
 import * as Yup from "yup";
+import classNames from 'classnames'
 
 import './NewInvoiceForm.scss';
 import trash from '../../assets/icon-delete.svg'
@@ -52,13 +53,15 @@ function NewInvoiceForm() {
     // setProductList(updatedList);
   }
 
+
+
   const validationSchema = Yup.object().shape({
     billFromStreet: Yup.string().required('required'),
     billFromCity: Yup.string().required('required'),
     billFromPostCode: Yup.string().required('required'),
     billFromCountry: Yup.string().required('required'),
-    qty: Yup.string().required('required'),
-    price: Yup.number().required('required'),
+    // qty: Yup.string().required('required'),
+    // price: Yup.number().required('required'),
     billToClientsName: Yup.string().required("required"),
     billToClientsEmail: Yup.string().email("Invalid email format").required("required"),
     billToStreetAdress: Yup.string().required('required'),
@@ -73,135 +76,338 @@ function NewInvoiceForm() {
     productTotal: Yup.array().of(Yup.number().required('required')),
   })
 
+  const onSubmit = async (values, actions) => {
+    console.log('click!!')
+    console.log(values);
+    dispatch(addInvoice(values))
+  }
+
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    submitForm
+  } = useFormik({
+    initialValues: {
+      billFromStreet: '',
+      billFromCity: '',
+      billFromPostCode: '',
+      billFromCountry: '',
+      qty: '',
+      price: '',
+      billToClientsName: '',
+      billToClientsEmail: '',
+      billToStreetAdress: '',
+      billToCity: '',
+      billToPostCode: '',
+      billToCountry: '',
+      date: '',
+      date2: '',
+      productName: Array(productCount).fill(''), // Инициализация массива с пустыми значениями
+      productQty: Array(productCount).fill(0), // Инициализация массива с нулевыми значениями
+      productPrice: Array(productCount).fill(0), // Инициализация массива с нулевыми значениями
+      productTotal: Array(productCount).fill(0),
+    },
+    validationSchema,
+    onSubmit
+  })
+
+  console.log(errors)
+
   if (isFormVisible) {
     return (
-      <div className='newInvoiceForm'>
-        <Formik
-          initialValues={{
-            billFromStreet: '',
-            billFromCity: '',
-            billFromPostCode: '',
-            billFromCountry: '',
-            qty: '',
-            price: '',
-            billToClientsName: '',
-            billToClientsEmail: '',
-            billToStreetAdress: '',
-            billToCity: '',
-            billToPostCode: '',
-            billToCountry: '',
-            date: '',
-            date2: '',
-            productName: Array(productCount).fill(''), // Инициализация массива с пустыми значениями
-            productQty: Array(productCount).fill(0), // Инициализация массива с нулевыми значениями
-            productPrice: Array(productCount).fill(0), // Инициализация массива с нулевыми значениями
-            productTotal: Array(productCount).fill(0),
-          }}
-          validationSchema={validationSchema}
-          onSubmit={async (values, actions) => {
-            // Обработка отправки данных формы
-            dispatch(addInvoice(values))
-          }}
-        >
-          <Form className="form">
-            <div className="billFrom">
-              <h2 className='title'>New Invoice</h2>
-              <div>
-                <h4>Bill From</h4>
-                <label htmlFor="billFromStreet" className='label'>Street Adress</label>
-                <ErrorMessage name='billFromStreet' component="div" className='error'/>
-                <Field className="input input-fullWidth" id="billFromStreet" name="billFromStreet" type="text" />
+      <div className='newInvoiceForm' autoComplete="off">
+
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="billFrom">
+            <h2 className='title'>New Invoice</h2>
+            <div>
+              <h4>Bill From</h4>
+              <div className="inputs-fullWidth">
+                <div className="input-title">
+                  <label htmlFor="billFromStreet" className='label'>Street Adress</label>
+                  {errors.billFromStreet && touched.billFromStreet && <p className='error'>{errors.billFromStreet}</p>}
+                </div>
+
+                <input
+                  className={`input input-fullWidth ${errors.billFromStreet && touched.billFromStreet ? 'input-error' : ''}`}
+                  id="billFromStreet"
+                  name="billFromStreet"
+                  type="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.billFromStreet}
+                />
               </div>
-              <div className="details">
-                <div>
+            </div>
+            <div className="details">
+              <div>
+                <div className="input-title">
                   <label htmlFor="billFromCity" className='label'>City</label>
-                  <Field className="input" id="billFromCity" name="billFromCity" type="text" />
+                  {errors.billFromCity && touched.billFromCity && <p className='error'>{errors.billFromCity}</p>}
                 </div>
-                <div>
+                <input
+                  className={`input ${errors.billFromCity && touched.billFromCity ? 'input-error' : ''}`}
+                  id="billFromCity"
+                  name="billFromCity"
+                  type="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.billFromCity}
+                />
+              </div>
+              <div>
+                <div className="input-title">
                   <label htmlFor="billFromPostCode" className='label'>Post Code</label>
-                  <Field className="input" id="billFromPostCode" name="billFromPostCode" type="text" />
+                  {errors.billFromPostCode && touched.billFromPostCode && <p className='error'>{errors.billFromPostCode}</p>}
                 </div>
-                <div>
+                <input
+                  className={`input ${errors.billFromPostCode && touched.billFromPostCode ? 'input-error' : ''}`}
+                  id="billFromPostCode"
+                  name="billFromPostCode"
+                  type="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.billFromPostCode}
+                />
+              </div>
+              <div>
+                <div className="input-title">
                   <label htmlFor="billFromCountry" className='label'>Country</label>
-                  <Field className="input" id="billFromCountry" name="billFromCountry" type="text" />
+                  {errors.billFromCountry && touched.billFromCountry && <p className='error'>{errors.billFromCountry}</p>}
                 </div>
+                <input
+                  className={`input ${errors.billFromCountry && touched.billFromCountry ? 'input-error' : ''}`}
+                  id="billFromCountry"
+                  name="billFromCountry"
+                  type="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.billFromCountry}
+                />
               </div>
             </div>
-            <div className="billTo">
-              <h4>Bill To</h4>
-              <div className='inputs-fullWidth'>
+          </div>
+          <div className="billTo">
+            <h4>Bill To</h4>
+            <div className='inputs-fullWidth'>
+              <div className="input-title">
                 <label htmlFor="billToClientsName" className='label'>Client’s Name</label>
-                <Field className="input input-fullWidth" id="billToClientsName" name="billToClientsName" type="text" />
+                {errors.billToClientsName && touched.billToClientsName && <p className='error'>{errors.billToClientsName}</p>}
+              </div>
+              <input
+                className={`input input-fullWidth ${errors.billToClientsName && touched.billToClientsName ? 'input-error' : ''}`}
+                id="billToClientsName"
+                name="billToClientsName"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billToClientsName}
+              />
 
+              <div className="input-title">
                 <label htmlFor="billToClientsEmail" className='label'>Client’s Email</label>
-                <Field className="input input-fullWidth" id="billToClientsEmail" name="billToClientsEmail" type="email" />
+                {errors.billToClientsEmail && touched.billToClientsEmail && <p className='error'>{errors.billToClientsEmail}</p>}
+              </div>
 
-                <label htmlFor="billTo" className='label'>Street Adress</label>
-                <Field className="input input-fullWidth" id="billToStreetAdress" name="billToStreetAdress" type="text" />
+              <input
+                className={`input input-fullWidth ${errors.billToClientsEmail && touched.billToClientsEmail ? 'input-error' : ''}`}
+                id="billToClientsEmail"
+                name="billToClientsEmail"
+                type="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billToClientsEmail}
+              />
+
+              <div className="input-title">
+                <label htmlFor="billToStreetAdress" className='label'>Street Adress</label>
+                {errors.billToStreetAdress && touched.billToStreetAdress && <p className='error'>{errors.billToStreetAdress}</p>}
               </div>
-              <div className="details">
-                <div>
-                  <label htmlFor="billTo" className='label'>City</label>
-                  <Field className="input" id="billToCity" name="billToCity" type="text" />
-                </div>
-                <div>
-                  <label htmlFor="billTo" className='label'>Post Code</label>
-                  <Field className="input" id="billToPostCode" name="billToPostCode" type="text" />
-                </div>
-                <div>
-                  <label htmlFor="billTo" className='label'>Country</label>
-                  <Field className="input" id="billToCountry" name="billToCountry" type="text" />
-                </div>
-              </div>
+
+              <input
+                className={`input input-fullWidth ${errors.billToStreetAdress && touched.billToStreetAdress ? 'input-error' : ''}`}
+                id="billToStreetAdress"
+                name="billToStreetAdress"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billToStreetAdress}
+              />
             </div>
-            <div className="dates">
+            <div className="details">
               <div>
-                <label htmlFor="invoiceDate" className='label'>Invoice Date</label>
-                <Field className="input" type="date" id='date' />
+                <div className="input-title">
+                  <label htmlFor="billToCity" className='label'>City</label>
+                  {errors.billToCity && touched.billToCity && <p className='error'>{errors.billToCity}</p>}
+                </div>
+
+                <input
+                  className={`input ${errors.billToCity && touched.billToCity ? 'input-error' : ''}`}
+                  id="billToCity"
+                  name="billToCity"
+                  type="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.billToCity}
+                />
               </div>
               <div>
-                <label htmlFor="invoiceDate" className='label'>Invoice Date</label>
-                <Field className="input" type="date" id='date2' />
-              </div>
-            </div>
-            <div className="items-list">
-              <h3>Item List</h3>
-              {productList.map((_, index) => (
-                <div className="item-content" key={index}>
-                  <div className="item-content__name">
-                    <p>Item Name</p>
-                    <Field className="input" name={`productName[${index}]`} type="text" />
-                  </div>
-                  <div className="item-content__qty">
-                    <p>Qty.</p>
-                    <Field className="input" name={`productQty[${index}]`} type="number" />
-                  </div>
-                  <div className="item-content__price">
-                    <p>Price</p>
-                    <Field className="input" name={`productPrice[${index}]`} type="number" />
-                  </div>
-                  <div className="item-content__total">
-                    <p>Total</p>
-                    <Field className="input totalPrice" name={`productTotal[${index}]`} readOnly type="number" />
-                  </div>
-                  <div className="item-content__remove productRemove" onClick={(e) => removeProduct(index, e)}>
-                    <img className="trash" src={trash} alt="trash" />
-                  </div>
+                <div className="input-title">
+                  <label htmlFor="billToPostCode" className='label'>Post Code</label>
+                  {errors.billToPostCode && touched.billToPostCode && <p className='error'>{errors.billToPostCode}</p>}
                 </div>
-              ))}
-              <div className="item-list-button">
-                <button type="button" onClick={() => addNewProduct()}>+ Add New Item</button>
+
+                <input
+                  className={`input ${errors.billToPostCode && touched.billToPostCode ? 'input-error' : ''}`}
+                  id="billToPostCode"
+                  name="billToPostCode"
+                  type="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.billToPostCode}
+                />
+              </div>
+              <div>
+                <div className="input-title">
+                  <label htmlFor="billToCountry" className='label'>Country</label>
+                  {errors.billToCountry && touched.billToCountry && <p className='error'>{errors.billToCountry}</p>}
+                </div>
+
+                <input
+                  className={`input ${errors.billToCountry && touched.billToCountry ? 'input-error' : ''}`}
+                  id="billToCountry"
+                  name="billToCountry"
+                  type="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.billToCountry}
+                />
               </div>
             </div>
-            <div className="btns__container">
-              <button type="button" className='button light' onClick={() => dispatch(hideForm())}>Discard</button>
-              <div className="">
-                <button type="submit" className='button dark'>Save as Draft</button>
-                <button type="submit" className='button purple'>Save & Send</button>
+          </div>
+          <div className="dates">
+            <div>
+              <div className="input-title">
+                <label htmlFor="date" className='label'>Invoice Date</label>
+                {errors.date && touched.date && <p className='error'>{errors.date}</p>}
               </div>
+
+              <input
+                className={`input ${errors.date && touched.date ? 'input-error' : ''}`}
+                id="date"
+                name="date"
+                type="date"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.date}
+              />
             </div>
-          </Form>
-        </Formik>
+            <div>
+              <div className="input-title">
+                <label htmlFor="date2" className='label'>Invoice Date 2</label>
+                {errors.date2 && touched.date2 && <p className='error'>{errors.date2}</p>}
+              </div>
+
+              <input
+                className={`input ${errors.date2 && touched.date2 ? 'input-error' : ''}`}
+                id="date2"
+                name="date2"
+                type="date"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.date2}
+              />
+            </div>
+          </div>
+
+          <div className="items-list">
+            <h3>Item List</h3>
+            {productList.map((_, index) => (
+              <div className="item-content" key={index}>
+                <div className="item-content__name">
+                  <div className="input-title">
+                    <label htmlFor={`productName[${index}]`} className='label'>Product Name</label>
+                    {errors.productName && touched.productName && <p className='error'>{errors.productName[index]}</p>}
+                  </div>
+
+                  <input
+                    className={`input ${errors.productName && touched.productName ? 'input-error' : ''}`}
+                    id={`productName[${index}]`}
+                    name={`productName[${index}]`}
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.productName[index]}
+                  />
+                </div>
+                <div className="item-content__qty">
+                  <div className="input-title">
+                    <label htmlFor={`productQty[${index}]`} className='label'>Quantity</label>
+                    {errors.productQty && touched.productQty && <p className='error'>{errors.productQty[index]}</p>}
+                  </div>
+
+                  <input
+                    className={`input ${errors.productQty && touched.productQty ? 'input-error' : ''}`}
+                    id={`productQty[${index}]`}
+                    name={`productQty[${index}]`}
+                    type="number"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.productQty[index]}
+                  />
+                </div>
+                <div className="item-content__price">
+                  <div className="input-title">
+                    <label htmlFor={`productPrice[${index}]`} className='label'>Product Price</label>
+                    {errors.productPrice && touched.productPrice && <p className='error'>{errors.productPrice[index]}</p>}
+                  </div>
+
+                  <input
+                    className={`input ${errors.productPrice && touched.productPrice ? 'input-error' : ''}`}
+                    id={`productPrice[${index}]`}
+                    name={`productPrice[${index}]`}
+                    type="number"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.productPrice[index]}
+                  />
+                </div>
+                <div className="item-content__total">
+                  <div className="input-title">
+                    <label htmlFor={`productTotal[${index}]`} className='label'>Product Total</label>
+                    {errors.productTotal && touched.productTotal && <p className='error'>{errors.productTotal[index]}</p>}
+                  </div>
+
+                  <input
+                    className="input totalPrice"
+                    id={`productTotal[${index}]`}
+                    name={`productTotal[${index}]`}
+                    type="number"
+                    readOnly
+                  // value={calculateTotal(index)} // Предполагается, что у вас есть функция calculateTotal
+                  />
+                </div>
+                <div className="item-content__remove productRemove" onClick={(e) => removeProduct(index, e)}>
+                  <img className="trash" src={trash} alt="trash" />
+                </div>
+              </div>
+            ))}
+            <div className="item-list-button">
+              <button type="button" onClick={() => addNewProduct()}>+ Add New Item</button>
+            </div>
+          </div>
+          <div className="btns__container">
+            <button type="button" className='button light' onClick={() => dispatch(hideForm())}>Discard</button>
+            <div className="">
+              <button type="submit" className='button dark' onClick={() => console.log('click')}>Save as Draft</button>
+              <button type="submit" className='button purple' >Save & Send</button>
+            </div>
+          </div>
+        </form>
       </div >
     );
   }
