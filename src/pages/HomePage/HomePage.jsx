@@ -6,14 +6,18 @@ import './HomePage.scss';
 
 import ModalWindow from "../../components/Modal-window/Modal-window";
 
-import { useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-
-import { useSelector } from "react-redux";
+import { setTheme } from "../../store/theme/theme-slice";
 
 function HomePage() {
   const theme = useSelector(state => state.theme.theme);
-  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setTheme('light'))
+  }, [dispatch])
   return (
     <Router>
       <div className="page" id={theme}>

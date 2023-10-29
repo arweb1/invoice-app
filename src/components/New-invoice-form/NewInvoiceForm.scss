@@ -89,13 +89,19 @@ label{
     display: flex;
     justify-content: space-between;
     background-color: #fff;
-    height: 50px;
+    // height: 100px;
     width: 499px;
     // display: flex;
     // justify-content: space-between;
     // margin-top: 40px;
 }
-
+.btns__container-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+}
 .items-list{
     h3{
         margin-top: 35px;
@@ -164,6 +170,7 @@ label{
 }
 .item-list-button{
     margin-top: 16px;
+    margin-bottom: 30px;
     button{
         color: var(--07, #7E88C3);
         font-size: 15px;

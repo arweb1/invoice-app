@@ -77,9 +77,11 @@ function NewInvoiceForm() {
   })
 
   const onSubmit = async (values, actions) => {
-    console.log('click!!')
-    console.log(values);
+    // console.log('click!!')
+    // console.log(values);
+    // console.log(actions)
     dispatch(addInvoice(values))
+    actions.resetForm()
   }
 
   const {
@@ -115,7 +117,7 @@ function NewInvoiceForm() {
     onSubmit
   })
 
-  console.log(errors)
+  // console.log(errors)
 
   if (isFormVisible) {
     return (
@@ -401,10 +403,12 @@ function NewInvoiceForm() {
             </div>
           </div>
           <div className="btns__container">
-            <button type="button" className='button light' onClick={() => dispatch(hideForm())}>Discard</button>
-            <div className="">
-              <button type="submit" className='button dark' onClick={() => console.log('click')}>Save as Draft</button>
-              <button type="submit" className='button purple' >Save & Send</button>
+            <div className="btns__container-content">
+              <button type="button" className='button light' onClick={() => dispatch(hideForm())}>Discard</button>
+              <div className="">
+                <button type="submit" className='button dark' onClick={() => console.log('click')}>Save as Draft</button>
+                <button type="submit" className='button purple' >Save & Send</button>
+              </div>
             </div>
           </div>
         </form>
