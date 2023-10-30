@@ -20,8 +20,8 @@ const initialState = {
             createdAt: moment().format("YYYY-MM-DD"),
             status: 'Paid',
             productName: ['product', 'second prodfuct', 'second product'],
-            productPrice:[20, 200, 10],
-            productQty: [4, 2, 12]
+            productPrice:[50, 300, 20],
+            productQty: [7, 3, 2]
         },
         {
             billFromCity: "Харьков",
@@ -75,6 +75,9 @@ const formSlice = createSlice({
             if(targetInvoice){
                 targetInvoice.status = 'Paid'
             }
+        },
+        editInvoice(state, action){
+            
         }
     }
 })
