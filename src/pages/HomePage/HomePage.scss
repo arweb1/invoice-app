@@ -460,14 +460,16 @@ main {
 		justify-content: center;
 	}
 }
-.filter-container{
+
+.filter-container {
 	position: relative;
 	cursor: pointer;
 
-	img{
+	img {
 		transition: .2s;
 	}
 }
+
 .filter-content {
 	position: absolute;
 	right: 0;
@@ -480,8 +482,8 @@ main {
 	visibility: hidden;
 	transition: .3s;
 	opacity: 0;
-	
-	&.active{
+
+	&.active {
 		opacity: 1;
 		visibility: unset;
 		transform: translateY(0);
@@ -501,19 +503,42 @@ main {
 }
 
 
-.filter-content-filters{
+.filter-content-filters {
 	padding: 24px;
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
 }
+
 .filter-item {
 	display: flex;
 	gap: 13px;
 	cursor: pointer;
+	align-items: center;
+
 	label {
 		color: var(--03, #1E2139);
 		font-size: 15px;
 		font-weight: 700;
+	}
+
+	input[type="checkbox"] {
+
+		
+		
+		&::before {
+			content: '';
+			width: 16px;
+			height: 16px;
+			border-radius: 2px;
+			// border: 1px solid var(--01, #7C5DFA);
+			background: var(--05, #DFE3FA);
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		&:checked::before {
+			background: var(--01, #7C5DFA);
+		}
 	}
 }
