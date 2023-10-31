@@ -1,19 +1,18 @@
-import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
 import { hideForm, addInvoice } from '../../store/form/form-slice';
 import * as Yup from "yup";
-import classNames from 'classnames'
 
 import './NewInvoiceForm.scss';
 import trash from '../../assets/icon-delete.svg'
 
 function NewInvoiceForm() {
   const [productCount, setProductCount] = useState(1);
-  const [products, setProducts] = useState([
-    { productName: '', productQty: 0, productPrice: 0, productTotal: 0 },
-  ]);
-  const [productData, setProductData] = useState([])
+  // const [products, setProducts] = useState([
+  //   { productName: '', productQty: 0, productPrice: 0, productTotal: 0 },
+  // ]);
+  // const [productData, setProductData] = useState([])
 
   const isFormVisible = useSelector((state) => state.form.isFormVisible);
   const dispatch = useDispatch();
@@ -29,7 +28,6 @@ function NewInvoiceForm() {
     }
   };
 
-
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
 
@@ -38,7 +36,7 @@ function NewInvoiceForm() {
     };
   }, [isFormVisible, dispatch]);
 
-  const productList = Array.from({ length: productCount })
+  const productList = Array.from({ length: productCount });
 
   const addNewProduct = () => {
     setProductCount(productCount + 1);
@@ -52,8 +50,6 @@ function NewInvoiceForm() {
     // If you want to update the productList, you may need to set it here.
     // setProductList(updatedList);
   }
-
-
 
   const validationSchema = Yup.object().shape({
     billFromStreet: Yup.string().required('required'),
@@ -117,8 +113,6 @@ function NewInvoiceForm() {
     onSubmit
   })
 
-  // console.log(errors)
-
   if (isFormVisible) {
     return (
       <div className='newInvoiceForm' autoComplete="off">
@@ -133,7 +127,6 @@ function NewInvoiceForm() {
                   <label htmlFor="billFromStreet" className='label'>Street Adress</label>
                   {errors.billFromStreet && touched.billFromStreet && <p className='error'>{errors.billFromStreet}</p>}
                 </div>
-
                 <input
                   className={`input input-fullWidth ${errors.billFromStreet && touched.billFromStreet ? 'input-error' : ''}`}
                   id="billFromStreet"
@@ -209,12 +202,10 @@ function NewInvoiceForm() {
                 onBlur={handleBlur}
                 value={values.billToClientsName}
               />
-
               <div className="input-title">
                 <label htmlFor="billToClientsEmail" className='label'>Client’s Email</label>
                 {errors.billToClientsEmail && touched.billToClientsEmail && <p className='error'>{errors.billToClientsEmail}</p>}
               </div>
-
               <input
                 className={`input input-fullWidth ${errors.billToClientsEmail && touched.billToClientsEmail ? 'input-error' : ''}`}
                 id="billToClientsEmail"
@@ -224,12 +215,10 @@ function NewInvoiceForm() {
                 onBlur={handleBlur}
                 value={values.billToClientsEmail}
               />
-
               <div className="input-title">
                 <label htmlFor="billToStreetAdress" className='label'>Street Adress</label>
                 {errors.billToStreetAdress && touched.billToStreetAdress && <p className='error'>{errors.billToStreetAdress}</p>}
               </div>
-
               <input
                 className={`input input-fullWidth ${errors.billToStreetAdress && touched.billToStreetAdress ? 'input-error' : ''}`}
                 id="billToStreetAdress"
@@ -246,7 +235,6 @@ function NewInvoiceForm() {
                   <label htmlFor="billToCity" className='label'>City</label>
                   {errors.billToCity && touched.billToCity && <p className='error'>{errors.billToCity}</p>}
                 </div>
-
                 <input
                   className={`input ${errors.billToCity && touched.billToCity ? 'input-error' : ''}`}
                   id="billToCity"
@@ -262,7 +250,6 @@ function NewInvoiceForm() {
                   <label htmlFor="billToPostCode" className='label'>Post Code</label>
                   {errors.billToPostCode && touched.billToPostCode && <p className='error'>{errors.billToPostCode}</p>}
                 </div>
-
                 <input
                   className={`input ${errors.billToPostCode && touched.billToPostCode ? 'input-error' : ''}`}
                   id="billToPostCode"
@@ -278,7 +265,6 @@ function NewInvoiceForm() {
                   <label htmlFor="billToCountry" className='label'>Country</label>
                   {errors.billToCountry && touched.billToCountry && <p className='error'>{errors.billToCountry}</p>}
                 </div>
-
                 <input
                   className={`input ${errors.billToCountry && touched.billToCountry ? 'input-error' : ''}`}
                   id="billToCountry"
@@ -297,7 +283,6 @@ function NewInvoiceForm() {
                 <label htmlFor="date" className='label'>Invoice Date</label>
                 {errors.date && touched.date && <p className='error'>{errors.date}</p>}
               </div>
-
               <input
                 className={`input ${errors.date && touched.date ? 'input-error' : ''}`}
                 id="date"
@@ -313,7 +298,6 @@ function NewInvoiceForm() {
                 <label htmlFor="date2" className='label'>Invoice Date 2</label>
                 {errors.date2 && touched.date2 && <p className='error'>{errors.date2}</p>}
               </div>
-
               <input
                 className={`input ${errors.date2 && touched.date2 ? 'input-error' : ''}`}
                 id="date2"
@@ -325,7 +309,6 @@ function NewInvoiceForm() {
               />
             </div>
           </div>
-
           <div className="items-list">
             <h3>Item List</h3>
             {productList.map((_, index) => (
@@ -335,7 +318,6 @@ function NewInvoiceForm() {
                     <label htmlFor={`productName[${index}]`} className='label'>Product Name</label>
                     {errors.productName && touched.productName && <p className='error'>{errors.productName[index]}</p>}
                   </div>
-
                   <input
                     className={`input ${errors.productName && touched.productName ? 'input-error' : ''}`}
                     id={`productName[${index}]`}
@@ -351,7 +333,6 @@ function NewInvoiceForm() {
                     <label htmlFor={`productQty[${index}]`} className='label'>Quantity</label>
                     {errors.productQty && touched.productQty && <p className='error'>{errors.productQty[index]}</p>}
                   </div>
-
                   <input
                     className={`input ${errors.productQty && touched.productQty ? 'input-error' : ''}`}
                     id={`productQty[${index}]`}
@@ -367,7 +348,6 @@ function NewInvoiceForm() {
                     <label htmlFor={`productPrice[${index}]`} className='label'>Product Price</label>
                     {errors.productPrice && touched.productPrice && <p className='error'>{errors.productPrice[index]}</p>}
                   </div>
-
                   <input
                     className={`input ${errors.productPrice && touched.productPrice ? 'input-error' : ''}`}
                     id={`productPrice[${index}]`}
@@ -383,7 +363,6 @@ function NewInvoiceForm() {
                     <label htmlFor={`productTotal[${index}]`} className='label'>Product Total</label>
                     {errors.productTotal && touched.productTotal && <p className='error'>{errors.productTotal[index]}</p>}
                   </div>
-
                   <input
                     className="input totalPrice"
                     id={`productTotal[${index}]`}
@@ -407,7 +386,7 @@ function NewInvoiceForm() {
               <button type="button" className='button light' onClick={() => dispatch(hideForm())}>Discard</button>
               <div className="">
                 <button type="submit" className='button dark' onClick={() => console.log('click')}>Save as Draft</button>
-                <button type="submit" className='button purple' >Save & Send</button>
+                <button type="submit" className='button purple'>Save & Send</button>
               </div>
             </div>
           </div>

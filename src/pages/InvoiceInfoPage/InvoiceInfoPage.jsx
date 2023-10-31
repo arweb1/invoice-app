@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { removeInvoice, toggleStatus } from '../../store/form/form-slice';
+import { removeInvoice, toggleStatus, setTotalAmount } from '../../store/form/form-slice';
 
 import ModalWindow from '../../components/Modal-window/Modal-window';
 
@@ -67,6 +67,7 @@ function InvoiceInfoPage() {
     }, 0);
   }
   
+  // dispatch(setTotalAmount(calculateTotalAmount()))
 
   const handleRemoveInvoice = (id) => {
     dispatch(removeInvoice(id))
@@ -178,3 +179,4 @@ function InvoiceInfoPage() {
 }
 
 export default InvoiceInfoPage;
+

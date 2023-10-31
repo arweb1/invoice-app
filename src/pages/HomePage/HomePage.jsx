@@ -4,11 +4,9 @@ import InvoiceInfoPage from "../InvoiceInfoPage/InvoiceInfoPage";
 import NewInvoiceForm from "../../components/New-invoice-form/NewInvoiceForm";
 import './HomePage.scss';
 
-import ModalWindow from "../../components/Modal-window/Modal-window";
-
 import { useDispatch,useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { setTheme } from "../../store/theme/theme-slice";
 
 function HomePage() {
