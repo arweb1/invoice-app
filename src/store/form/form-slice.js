@@ -43,7 +43,8 @@ const initialState = {
             productQty: [4, 2, 12]
         }
         
-    ]
+    ],
+    activeFilters: [],
 }
 
 const formSlice = createSlice({
@@ -76,11 +77,22 @@ const formSlice = createSlice({
                 targetInvoice.status = 'Paid'
             }
         },
-        editInvoice(state, action){
-            
+        addFilter(state, action){
+            state.activeFilters.push(action.payload)
+        },
+        removeFilter(state, action){
+            state.activeFilters = state.activeFilters.filter(filter => filter !== action.payload)
         }
     }
 })
 
 export const formReducer = formSlice.reducer;
-export const {showForm, hideForm, addInvoice, removeInvoice, toggleStatus} = formSlice.actions;
+export const {
+    showForm, 
+    hideForm, 
+    addInvoice, 
+    removeInvoice, 
+    toggleStatus, 
+    addFilter,
+    removeFilter
+} = formSlice.actions;
