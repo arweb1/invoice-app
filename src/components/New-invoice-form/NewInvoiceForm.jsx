@@ -9,10 +9,6 @@ import trash from '../../assets/icon-delete.svg'
 
 function NewInvoiceForm() {
   const [productCount, setProductCount] = useState(1);
-  // const [products, setProducts] = useState([
-  //   { productName: '', productQty: 0, productPrice: 0, productTotal: 0 },
-  // ]);
-  // const [productData, setProductData] = useState([])
 
   const isFormVisible = useSelector((state) => state.form.isFormVisible);
   const dispatch = useDispatch();
@@ -87,7 +83,8 @@ function NewInvoiceForm() {
     handleChange,
     handleBlur,
     handleSubmit,
-    submitForm
+    submitForm,
+    setFieldValue
   } = useFormik({
     initialValues: {
       billFromStreet: '',
@@ -112,6 +109,28 @@ function NewInvoiceForm() {
     validationSchema,
     onSubmit
   })
+
+  const calculateAmount = (index, values) => {
+    const qty = values.productQty[index];
+    const price = values.productPrice[index];
+    return qty * price;
+  }
+
+  const handleQtyChange = (e, index) => {
+    handleChange(e);
+    const qty = e.target.valueAsNumber;
+    const price = values.productPrice[index];
+    const total = qty * price;
+    setFieldValue(`productTotal[${index}]`, total);
+  }
+  
+  const handlePriceChange = (e, index) => {
+    handleChange(e);
+    const qty = values.productQty[index];
+    const price = e.target.valueAsNumber;
+    const total = qty * price;
+    setFieldValue(`productTotal[${index}]`, total);
+  }
 
   if (isFormVisible) {
     return (
@@ -338,7 +357,7 @@ function NewInvoiceForm() {
                     id={`productQty[${index}]`}
                     name={`productQty[${index}]`}
                     type="number"
-                    onChange={handleChange}
+                    onChange={(e) => handleQtyChange(e, index)}
                     onBlur={handleBlur}
                     value={values.productQty[index]}
                   />
@@ -353,7 +372,7 @@ function NewInvoiceForm() {
                     id={`productPrice[${index}]`}
                     name={`productPrice[${index}]`}
                     type="number"
-                    onChange={handleChange}
+                    onChange={(e) => handlePriceChange(e, index)}
                     onBlur={handleBlur}
                     value={values.productPrice[index]}
                   />
@@ -368,6 +387,7 @@ function NewInvoiceForm() {
                     id={`productTotal[${index}]`}
                     name={`productTotal[${index}]`}
                     type="number"
+                    value={values.productTotal[index]}
                     readOnly
                   // value={calculateTotal(index)} // Предполагается, что у вас есть функция calculateTotal
                   />

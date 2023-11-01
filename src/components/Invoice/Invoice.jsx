@@ -2,13 +2,17 @@ import arrowRight from '../../assets/icon-arrow-right.svg';
 
 import { useSelector } from 'react-redux';
 
-function Invoice({data}) {
-    const totalAmount = useSelector(state => state.form.totalAmount)
-
+function Invoice({data, productPrices, productQty}) {
+    
+    
     const { id,
             billToClientsName,
             createdAt,
             status} = data;
+
+const calculateAmount = productPrices.reduce((total, price, index) => {
+    return total + (price * productQty[index])
+}, 0)
 
 return (
     <div className="single-invoice">
@@ -22,7 +26,7 @@ return (
             <p>{billToClientsName}</p>
         </div>
         <div className="single-invoice__value">
-            <span>$ {totalAmount}</span>
+            <span>$ {calculateAmount}</span>
         </div>
         <div className={`single-invoice__status status-icon ${status.toLowerCase()}`}>
             <p>{status}</p>

@@ -13,7 +13,6 @@ const initialState = {
             productName: ['product', 'second prodfuct', 'second product'],
             productPrice:[20, 200, 10],
             productQty: [4, 2, 12],
-            totalAmount: 600
 
         },
         {
@@ -24,7 +23,6 @@ const initialState = {
             productName: ['product', 'second prodfuct', 'second product'],
             productPrice:[50, 300, 20],
             productQty: [7, 3, 2],
-            totalAmount: 600
             
         },
         {
@@ -45,7 +43,7 @@ const initialState = {
             productName: ['product', 'second prodfuct', 'second product'],
             productPrice:[20, 200, 10],
             productQty: [4, 2, 12],
-            totalAmount: 600
+
         }
         
     ],
