@@ -129,13 +129,13 @@ function InvoiceInfoPage() {
                 <h4 className='containerTitle'>Bill To</h4>
                 <h3 className='bold'>{billToClientsName}</h3>
                 <br />
-                {billFromStreet}
+                {billToStreetAdress}
                 <br />
-                {billFromCity}
+                {billToCity}
                 <br />
-                {billFromPostCode}
+                {billToPostCode}
                 <br />
-                {billFromCountry}
+                {billToCountry}
               </div>
               <div className="sent-to-container">
                 <h4 className='containerTitle'>Sent To</h4>

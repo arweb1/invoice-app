@@ -9,6 +9,11 @@ import trash from '../../assets/icon-delete.svg'
 
 function NewInvoiceForm() {
   const [productCount, setProductCount] = useState(1);
+  const [selectedStatus, setSelectedStatus] = useState('Draft');
+
+  const handleStatusChange = (status) => {
+    setSelectedStatus(status)
+  }
 
   const isFormVisible = useSelector((state) => state.form.isFormVisible);
   const dispatch = useDispatch();
@@ -43,8 +48,6 @@ function NewInvoiceForm() {
     const updatedList = [...productList];
     updatedList.splice(idToRemove, 1);
     setProductCount(productCount - 1);
-    // If you want to update the productList, you may need to set it here.
-    // setProductList(updatedList);
   }
 
   const validationSchema = Yup.object().shape({
@@ -52,8 +55,6 @@ function NewInvoiceForm() {
     billFromCity: Yup.string().required('required'),
     billFromPostCode: Yup.string().required('required'),
     billFromCountry: Yup.string().required('required'),
-    // qty: Yup.string().required('required'),
-    // price: Yup.number().required('required'),
     billToClientsName: Yup.string().required("required"),
     billToClientsEmail: Yup.string().email("Invalid email format").required("required"),
     billToStreetAdress: Yup.string().required('required'),
@@ -69,10 +70,7 @@ function NewInvoiceForm() {
   })
 
   const onSubmit = async (values, actions) => {
-    // console.log('click!!')
-    // console.log(values);
-    // console.log(actions)
-    dispatch(addInvoice(values))
+    dispatch(addInvoice({...values, status: selectedStatus}))
     actions.resetForm()
   }
 
@@ -110,12 +108,6 @@ function NewInvoiceForm() {
     onSubmit
   })
 
-  const calculateAmount = (index, values) => {
-    const qty = values.productQty[index];
-    const price = values.productPrice[index];
-    return qty * price;
-  }
-
   const handleQtyChange = (e, index) => {
     handleChange(e);
     const qty = e.target.valueAsNumber;
@@ -123,7 +115,7 @@ function NewInvoiceForm() {
     const total = qty * price;
     setFieldValue(`productTotal[${index}]`, total);
   }
-  
+
   const handlePriceChange = (e, index) => {
     handleChange(e);
     const qty = values.productQty[index];
@@ -314,7 +306,7 @@ function NewInvoiceForm() {
             </div>
             <div>
               <div className="input-title">
-                <label htmlFor="date2" className='label'>Invoice Date 2</label>
+                <label htmlFor="date2" className='label'>Payment Terms</label>
                 {errors.date2 && touched.date2 && <p className='error'>{errors.date2}</p>}
               </div>
               <input
@@ -379,7 +371,7 @@ function NewInvoiceForm() {
                 </div>
                 <div className="item-content__total">
                   <div className="input-title">
-                    <label htmlFor={`productTotal[${index}]`} className='label'>Product Total</label>
+                    <label htmlFor={`productTotal[${index}]`} className='label'>Total Price</label>
                     {errors.productTotal && touched.productTotal && <p className='error'>{errors.productTotal[index]}</p>}
                   </div>
                   <input
@@ -405,8 +397,8 @@ function NewInvoiceForm() {
             <div className="btns__container-content">
               <button type="button" className='button light' onClick={() => dispatch(hideForm())}>Discard</button>
               <div className="">
-                <button type="submit" className='button dark' onClick={() => console.log('click')}>Save as Draft</button>
-                <button type="submit" className='button purple'>Save & Send</button>
+                <button type="submit" className='button dark' onClick={() => handleStatusChange('Draft')}>Save as Draft</button>
+                <button type="submit" className='button purple' onClick={() => handleStatusChange('Pending')}>Save & Send</button>
               </div>
             </div>
           </div>

@@ -127,7 +127,10 @@ label{
         letter-spacing: -0.25px;
         
         &.totalPrice{
-            border: 0!important
+            border: 0!important;
+            color: #888EB0;
+            font-weight: 700;
+            font-size: 15px;
         }
     }
 }
@@ -138,6 +141,7 @@ label{
     align-items: center;
     max-width: 100%;
     grid-column-gap: 16px;
+    margin-bottom: 18px;
 
     .input{
         width: 100%;

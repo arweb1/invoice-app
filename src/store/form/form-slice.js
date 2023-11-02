@@ -39,7 +39,7 @@ const initialState = {
             invoiceDate: "2023-10-12",
             createdAt: moment().format("YYYY-MM-DD"),
             id: `${uuidv4().substr(0, 6)}`,
-            status: "Pending",
+            status: "Draft",
             productName: ['product', 'second prodfuct', 'second product'],
             productPrice:[20, 200, 10],
             productQty: [4, 2, 12],
@@ -61,11 +61,13 @@ const formSlice = createSlice({
             state.isFormVisible = false
         },
         addInvoice(state, action){
+            const {data, status} = action.payload;
+            console.log(status);
             const newInvoice = {
                 ...action.payload,
                 id: `${uuidv4().substr(0, 6)}`,
                 createdAt: moment().format("YYYY-MM-DD"),
-                status: 'Pending'
+                status: status
             }
             state.invoicesList.push(newInvoice)
         },
