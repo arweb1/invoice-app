@@ -167,3 +167,33 @@
     letter-spacing: -0.25px;
     font-size: 15px;
 }
+
+.btns-mobile{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 1000;
+    background-color: #fff;
+    width: 100%;
+    padding: 20px;
+    transition: none;
+    transform: translate(0, 0); /* Зафиксируем положение элемента */
+}
+
+@media(max-width: 600px){
+	.btns-desktop{
+        display: none;
+    }
+    .status{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .btns-mobile{
+        display: block;
+        z-index: 10000;
+        // position: fixed;
+    }
+}

@@ -14,7 +14,7 @@ function InvoiceInfoPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const invoicesList = useSelector(state => state.form.invoicesList);
-  
+
 
   const goBackPage = () => {
     navigate(-1)
@@ -66,7 +66,7 @@ function InvoiceInfoPage() {
       return total + itemTotal;
     }, 0);
   }
-  
+
   // dispatch(setTotalAmount(calculateTotalAmount()))
 
   const handleRemoveInvoice = (id) => {
@@ -93,11 +93,12 @@ function InvoiceInfoPage() {
                 <p>{status}</p>
               </div>
             </div>
-            <div className="buttons">
+            <div className="buttons btns-desktop">
               <button className="button light">Edit</button>
               <button className="button red" onClick={() => setModalActive(true)}>Delete</button>
               <button className="button purple" onClick={() => handleToggleStatus(id)}>Mark as Paid</button>
             </div>
+
           </div>
           <div className="full-info">
             <div className="full-info-header">
@@ -150,18 +151,24 @@ function InvoiceInfoPage() {
                 <p className='label-total thin-text'>Total</p>
                 {productName.map((product, index) => (
                   <div className="total-item">
-                  <p className='name bold-text'>{product}</p>
-                  <p className='qty thin-text'>{productQty[index]}</p>
-                  <p className='price thin-text'>{productPrice[index]}</p>
-                  <p className='total-price bold-text'>$ {calculateItemTotal(productQty[index], productPrice[index])}</p>
-                </div> 
+                    <p className='name bold-text'>{product}</p>
+                    <p className='qty thin-text'>{productQty[index]}</p>
+                    <p className='price thin-text'>{productPrice[index]}</p>
+                    <p className='total-price bold-text'>$ {calculateItemTotal(productQty[index], productPrice[index])}</p>
+                  </div>
                 ))}
-              </div> 
+              </div>
               <div className="grand-total">
-                  <p>Amount Due</p>
-                  <span>$ {calculateTotalAmount()}</span>
-                </div>
+                <p>Amount Due</p>
+                <span>$ {calculateTotalAmount()}</span>
+              </div>
             </div>
+          </div>
+
+          <div className="buttons btns-mobile">
+            <button className="button light">Edit</button>
+            <button className="button red" onClick={() => setModalActive(true)}>Delete</button>
+            <button className="button purple" onClick={() => handleToggleStatus(id)}>Mark as Paid</button>
           </div>
 
         </div>

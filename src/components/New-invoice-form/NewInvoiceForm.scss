@@ -109,12 +109,7 @@ label{
     #dark & {
         background-color: #141625;
     }
-
-    // height: 100px;
     width: 499px;
-    // display: flex;
-    // justify-content: space-between;
-    // margin-top: 40px;
 }
 .btns__container-content{
     display: flex;
@@ -351,4 +346,11 @@ label{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media(max-width: 1100px) {
+    .newInvoiceForm{
+        margin-left: 0;
+        margin-top: 50px;
+    }
 }
