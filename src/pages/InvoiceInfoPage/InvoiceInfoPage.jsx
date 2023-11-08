@@ -88,7 +88,7 @@ function InvoiceInfoPage() {
           </div>
           <div className="invoice-header">
             <div className="status">
-              <p>Status</p>
+              <p className='satus-title'>Status</p>
               <div className={`status-icon ${status.toLowerCase()}`}>
                 <p>{status}</p>
               </div>
@@ -144,16 +144,16 @@ function InvoiceInfoPage() {
             </div>
             <div className="total">
               <div className="total-container">
-                <p className='label-name'>Item Name</p>
-                <p className='label-qty'>Qty.</p>
-                <p className='label-price'>Price</p>
-                <p className='label-total'>Total</p>
+                <p className='label-name thin-text'>Item Name</p>
+                <p className='label-qty thin-text'>Qty.</p>
+                <p className='label-price thin-text'>Price</p>
+                <p className='label-total thin-text'>Total</p>
                 {productName.map((product, index) => (
                   <div className="total-item">
-                  <p className='name'>{product}</p>
-                  <p className='qty'>{productQty[index]}</p>
-                  <p className='price'>{productPrice[index]}</p>
-                  <p className='total-price'>$ {calculateItemTotal(productQty[index], productPrice[index])}</p>
+                  <p className='name bold-text'>{product}</p>
+                  <p className='qty thin-text'>{productQty[index]}</p>
+                  <p className='price thin-text'>{productPrice[index]}</p>
+                  <p className='total-price bold-text'>$ {calculateItemTotal(productQty[index], productPrice[index])}</p>
                 </div> 
                 ))}
               </div> 

@@ -7,6 +7,8 @@
     height: 100%;
     margin-left: 100px;
     background: rgba(0, 0, 0, .4984);
+
+    
 }
 
 .input{
@@ -18,6 +20,12 @@
     padding-left: 20px;
     padding-right: 16px;
     margin-top: 9px;
+
+    #dark & {
+        background-color: #1E2139;
+        border: 1px solid var(--04, #252945);
+        color: #fff;
+    }
 }
 .input-fullWidth{
     width: 100%;
@@ -37,6 +45,10 @@ label{
     padding: 60px;
     height: 100%;
     overflow-y: scroll; /* Добавление скролла при необходимости */
+
+    #dark & {
+        background-color: #141625;
+    }
     h4{
         color: #7C5DFA;
         font-weight: 700;
@@ -66,6 +78,10 @@ label{
     font-size: 24px;
     font-weight: 700;
     line-height: 32px;
+
+    #dark & {
+        color: #fff
+    } 
 }
 .details, .dates{
     margin-top: 25px;
@@ -89,6 +105,11 @@ label{
     display: flex;
     justify-content: space-between;
     background-color: #fff;
+
+    #dark & {
+        background-color: #141625;
+    }
+
     // height: 100px;
     width: 499px;
     // display: flex;
@@ -184,14 +205,42 @@ label{
         background: var(--05, #DFE3FA);
         padding-top: 18px;
         padding-bottom: 15px;
+
+        #dark & {
+            color: #DFE3FA;
+            background: #252945;
+        }
     }
 }
 
 .total{
     border-radius: 8px 8px 0px 0px;
-    background: #F9FAFE;
     margin-top: 44px;
     margin-bottom: 48px;
+
+    #light & {
+        background: #F9FAFE;
+    }
+    #dark & {
+        background: #252945;
+    }
+
+    .bold-text{
+        #light & {
+            color: #0C0E16;
+        }
+        #dark & {
+            color: #fff;
+        }
+    }
+    .thin-text{
+        #light & {
+            color: #7E88C3;
+        }
+        #dark & {
+            color: #DFE3FA;
+        }
+    }
 }
 
 .total-container{
@@ -259,6 +308,7 @@ label{
 }
 
 .grand-total{
+    
     padding: 32px 32px 21px 32px;
     width: 100%;
     border-radius: 0px 0px 8px 8px;
@@ -267,7 +317,12 @@ label{
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    #light & {
+        background: #373B53;
+    }
+    #dark & {
+        background: #0C0E16;
+    }
     p{
         color: #FFF;
         font-size: 13px;
@@ -290,7 +345,7 @@ label{
     font-weight: 600;
 }
 .input-error{
-    border: 1px solid #EC5757;
+    border: 1px solid #EC5757!important;
 }
 .input-title{
     display: flex;

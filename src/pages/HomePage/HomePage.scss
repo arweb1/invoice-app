@@ -257,32 +257,35 @@ main {
 	}
 }
 
-@media (max-width: 1024px){
-	.left-sidebar{
+@media (max-width: 1024px) {
+	.left-sidebar {
 		width: 100vw;
 		max-width: none;
-		min-height:auto;
+		min-height: auto;
 		height: 80px;
-		
+		z-index: 1000;
 
-		&_wrapper{
+
+		&_wrapper {
 			flex-direction: row;
 			height: 80px;
 
-			.bottom-info{
+			.bottom-info {
 				flex-direction: row;
 				align-items: center;
 				width: auto;
-				.themeIcon{
+
+				.themeIcon {
 					margin-bottom: 0;
 					margin-right: 32px;
 				}
-				.profile{
+
+				.profile {
 					padding: 0 32px;
 					border-left: 1px solid #494E6E;
 					border-top: none;
 
-					.avatar{
+					.avatar {
 						width: 32px;
 						height: 32px;
 					}
@@ -290,16 +293,24 @@ main {
 			}
 		}
 
-		.logo-container{
+		.logo-container {
 			height: 80px;
 			width: 80px;
 
-			img{
+			img {
 				height: 31px;
 				width: 29px;
 				max-width: none;
 			}
 		}
+	}
+
+	.controls {
+		margin-top: 90px !important;
+	}
+
+	.full-info_wrapper {
+		margin-top: 95px;
 	}
 }
 
@@ -309,6 +320,8 @@ main {
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 80px;
+
+
 
 	.controls-leftside {
 		.controls-leftside__tag {
@@ -477,6 +490,20 @@ main {
 		}
 	}
 
+	.draft {
+		#dark & {
+			background-color: rgba(223, 227, 250, 0.0571);
+
+			p {
+				color: #DFE3FA !important;
+
+				&::before {
+					background-color: #DFE3FA;
+				}
+			}
+		}
+	}
+
 	&__status {
 		width: 104px;
 		border-radius: 6px;
@@ -523,14 +550,23 @@ main {
 	position: absolute;
 	right: 0;
 	top: 20px;
-	background-color: #fff;
 	width: 192px;
 	border-radius: 8px;
-	box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
 	transform: translateY(-20%);
 	visibility: hidden;
 	transition: .3s;
 	opacity: 0;
+
+	#light & {
+		background-color: #fff;
+		box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
+
+	}
+
+	#dark & {
+		background: var(--04, #252945);
+		box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
+	}
 
 	&.active {
 		opacity: 1;
@@ -543,11 +579,18 @@ main {
 	display: flex;
 	align-items: center;
 	gap: 15px;
-
 	p {
 		color: var(--08, #0c0e16);
 		font-size: 15px;
 		font-weight: 700;
+
+		#light & {
+			color: #0c0e16;
+		}
+
+		#dark & {
+			color: #fff;
+		}
 	}
 }
 
@@ -566,15 +609,18 @@ main {
 	align-items: center;
 
 	label {
-		color: var(--03, #1E2139);
 		font-size: 15px;
 		font-weight: 700;
+
+		#light & {
+			color: var(--03, #1E2139);
+		}
+		#dark & {
+			color: #fff;
+		}
 	}
 
 	input[type="checkbox"] {
-
-		
-		
 		&::before {
 			content: '';
 			width: 16px;

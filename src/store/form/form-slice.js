@@ -44,6 +44,26 @@ const initialState = {
             productPrice:[20, 200, 10],
             productQty: [4, 2, 12],
 
+        },
+        {
+            billFromCity: "Харьков",
+            billFromCountry: "Украина",
+            billFromPostCode: "71108",
+            billFromStreet: "пушка 79/1",
+            billToCity: "Kyiv",
+            billToClientsEmail: "agaevrweb@gmail.com",
+            billToClientsName: "Ruslan Ahaiev",
+            billToCountry: "Украина",
+            billToPostCode: "02144",
+            billToStreetAdress : "sofii rusovoy 5b",
+            invoiceDate: "2023-10-12",
+            createdAt: moment().format("YYYY-MM-DD"),
+            id: `${uuidv4().substr(0, 6)}`,
+            status: "Paid",
+            productName: ['product', 'second prodfuct', 'second product'],
+            productPrice:[20, 200, 10],
+            productQty: [4, 2, 12],
+
         }
         
     ],

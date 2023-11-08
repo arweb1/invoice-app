@@ -16,12 +16,18 @@
         margin-right: 23px;
     }
     button{
-        color:#0C0E16;
         font-size: 15px;
         font-weight: 700;
         line-height: 15px; /* 100% */
         letter-spacing: -0.25px;
         margin-bottom: 30px; 
+
+        #light & {
+            color:#0C0E16;
+        }
+        #dark & {
+            color: #888EB0;
+        }
     }
 }
 
@@ -34,13 +40,38 @@
     justify-content: space-between;
     align-items: center;
 
+    #light & {
+        background-color: #fff;
+    }
+    #dark & {
+        background-color: #1E2139;
+    }
+
     .status{
         display: flex;
         align-items: center;
-        p:first-child{
-             margin-right: 20px;
+        gap: 20px;
+        .satus-title{
+            #light & {
+                color:#0C0E16;
+            }
+            #dark & {
+                color: #DFE3FA;
+            }
+        }
+        .draft{
+            #dark & {
+                background-color: rgba(223, 227, 250, 0.0571);
+                p{
+                    color: #DFE3FA;
+                    &::before{
+                        background-color: #DFE3FA;
+                    }
+                }
+            }
         }
     }
+    
 }
 
 .full-info{
@@ -48,10 +79,22 @@
     margin-bottom: 54px;
     padding: 48px 50px;
     border-radius: 8px;
-    background: #FFF;
+
+    #light & {
+        background: #FFF;
+    }
+    #dark & {
+        background: #1E2139;
+    }
     box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
 
     .id{
+        #light & {
+            color:#0C0E16;
+        }
+        #dark & {
+            color: #DFE3FA;
+        }
         color: #0C0E16;
         font-size: 15px;
         font-weight: 700;
@@ -63,7 +106,12 @@
     }
 }
 .containerTitle{
-    color: #7E88C3;
+    #light & {
+        color:#7E88C3;
+    }
+    #dark & {
+        color: #DFE3FA;
+    }
     font-weight: 500;
     font-size: 13px;
     margin-bottom: 13px; 
@@ -96,25 +144,26 @@
 }
 
 .bill-to-container{
-    color: #7E88C3;
+    #light & {
+        color:#7E88C3;
+    }
+    #dark & {
+        color: #DFE3FA;
+    }
     font-weight: 500;
     line-height: 18px;
     font-size: 13px;
-    h3{
-        
-    }
 }
 .bold{
+    #light & {
+        color:#0C0E16;
+    }
+    #dark & {
+        color: #fff;
+    }
     color: #0C0E16;
     font-weight: 700;
     line-height: 20px;
     letter-spacing: -0.25px;
     font-size: 15px;
 }
-
-
-// .adress{
-//     display: flex;
-//     flex-direction: column;
-//     text-align: right;
-// }
