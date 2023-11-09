@@ -7,8 +7,6 @@
     height: 100%;
     margin-left: 100px;
     background: rgba(0, 0, 0, .4984);
-
-    
 }
 
 .input{
@@ -352,5 +350,10 @@ label{
     .newInvoiceForm{
         margin-left: 0;
         margin-top: 50px;
+    }
+}
+@media(max-width: 800px){
+    main{
+        
     }
 }

@@ -78,7 +78,6 @@ function InvoiceInfoPage() {
     dispatch(toggleStatus(id))
   }
 
-
   return (
     <>
       <div className="container">
@@ -98,7 +97,6 @@ function InvoiceInfoPage() {
               <button className="button red" onClick={() => setModalActive(true)}>Delete</button>
               <button className="button purple" onClick={() => handleToggleStatus(id)}>Mark as Paid</button>
             </div>
-
           </div>
           <div className="full-info">
             <div className="full-info-header">
@@ -164,13 +162,11 @@ function InvoiceInfoPage() {
               </div>
             </div>
           </div>
-
           <div className="buttons btns-mobile">
             <button className="button light">Edit</button>
             <button className="button red" onClick={() => setModalActive(true)}>Delete</button>
             <button className="button purple" onClick={() => handleToggleStatus(id)}>Mark as Paid</button>
           </div>
-
         </div>
         <ModalWindow active={modalActive} setActive={setModalActive}>
           <h3>Confirm Deletion</h3>

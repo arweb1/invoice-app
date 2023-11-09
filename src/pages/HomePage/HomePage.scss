@@ -380,9 +380,16 @@ main {
 
 		.new-invoice {
 			margin-left: 40px;
+			p{
+				&:after{
+					content: ' Invoice';
+					display: inline;
+				}
+			}
 		}
 	}
 }
+
 
 .invoice-list {
 	margin-top: 64px;
@@ -580,6 +587,12 @@ main {
 	align-items: center;
 	gap: 15px;
 	p {
+		&:after{
+			content: ' by status';
+			display: inline;
+
+		}		
+
 		color: var(--08, #0c0e16);
 		font-size: 15px;
 		font-weight: 700;
@@ -593,6 +606,8 @@ main {
 		}
 	}
 }
+
+
 
 
 .filter-content-filters {
@@ -672,5 +687,21 @@ main {
 			display: none;
 		}
 	}
-}
 
+	.filter-btn{
+		p{
+			&:after{
+				content: ''
+			}
+		}
+	}
+	.new-invoice{
+		margin-left: 18px!important;
+		p{
+			&:after{
+				content: ''!important;
+			
+			}
+		}
+	}
+}

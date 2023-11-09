@@ -38,7 +38,7 @@ function Controls() {
             onClick={() => handleShowFilters()}
             className={`filter-btn`}
           >
-            <p>Filter by status</p>
+            <p>Filter </p>
             <img
               src={arrow}
               alt="arrow down"
@@ -79,7 +79,7 @@ function Controls() {
         </div>
         <button className="new-invoice btn1" onClick={() => dispatch(showForm())}>
           <img src={plusImage} alt="plus" />
-          <p>New Invoice</p>
+          <p>New </p>
         </button>
       </div>
     </div>
