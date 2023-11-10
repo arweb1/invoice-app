@@ -40,10 +40,8 @@ label{
 .form{
     max-width: 619px;
     background-color: #fff;
-    padding: 60px;
     height: 100%;
     overflow-y: scroll; /* Добавление скролла при необходимости */
-
     #dark & {
         background-color: #141625;
     }
@@ -54,60 +52,19 @@ label{
         margin-bottom: 24px;
         margin-top: 46px;
     }
-
-    .billFrom{
-        display: flex;
-        flex-direction: column;
-    }
-    .details{
-        display: flex;
-        justify-content: space-between;
-        div{
-            max-width: 152px;
-            input{
-                max-width: 152px;
-            }
-        }
-    }
 }
 
-.title{
-    color: #0C0E16;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 32px;
-
-    #dark & {
-        color: #fff
-    } 
-}
-.details, .dates{
-    margin-top: 25px;
-}
-.inputs-fullWidth .input{
-    margin-bottom: 25px;
-}
-.dates{
-    display: flex;
-    justify-content: space-between;
-    div{
-        display: flex;
-        flex-direction: column;
-        width: 240px;
-    }
-}
 
 .btns__container{
-    position: fixed;
-    bottom: 0px;
-    display: flex;
-    justify-content: space-between;
+    position: sticky;
+    bottom: 0;
+    left: 0;
     background-color: #fff;
 
     #dark & {
         background-color: #141625;
     }
-    width: 499px;
+    width: 100%;
 }
 .btns__container-content{
     display: flex;
@@ -156,7 +113,7 @@ label{
     max-width: 100%;
     grid-column-gap: 16px;
     margin-bottom: 18px;
-
+    gap: 10px;
     .input{
         width: 100%;
     }
@@ -332,14 +289,7 @@ label{
         letter-spacing: -0.5px;
     }
 }
-.error{
-    color: #EC5757;
-    font-size: 10px;
-    font-weight: 600;
-}
-.input-error{
-    border: 1px solid #EC5757!important;
-}
+
 .input-title{
     display: flex;
     justify-content: space-between;
@@ -351,9 +301,112 @@ label{
         margin-left: 0;
         margin-top: 50px;
     }
+    .form{
+        padding: 60px 60px 40px 60px!important;
+    }
 }
-@media(max-width: 800px){
-    main{
-        
+
+
+.form{
+    padding: 60px 60px 0px 60px;
+    // padding-bottom: 120px;
+}
+.title{
+    color: #0C0E16;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    #dark & {
+        color: #fff
+    } 
+}
+.inputs-grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 24px;
+}
+.inputs-fullWidth{
+    grid-row: 2/3;
+    grid-column: 1/4;
+}
+.bill-from-city, .bill-from-postCode, .bill-from-country{
+    grid-row: 3/4;
+    width: 100%;
+}
+
+.bill-to-name{
+    grid-row: 2/3;
+    grid-column: 1/4;
+}
+.bill-to-email{
+    grid-row: 3/4;
+    grid-column: 1/4;
+}
+.bill-to-street{
+    grid-row: 4/5;
+    grid-column: 1/4;
+}
+.bill-to-city, .bill-to-country, .bill-to-postCode{
+    grid-row: 5/6;
+}
+.inputs-details{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.input{
+    width: 100%;
+}
+.error{
+    color: #EC5757;
+    font-size: 10px;
+    font-weight: 600;
+}
+.input-error{
+    border: 1px solid #EC5757!important;
+}
+@media(max-width: 550px){
+    .inputs-grid{
+        grid-template-columns: 1fr 1fr;
+    }
+    .inputs-fullWidth{
+        grid-column: 1/3;
+    }
+    .bill-from-country{
+        grid-row: 4/5;
+        grid-column: 1/3;
+    }
+    .bill-to-country{
+        grid-row: 6/7;
+        grid-column: 1/3;
+    }
+    .bill-to-name, .bill-to-email, .bill-to-street{
+        grid-column: 1/3;
+    }
+    .inputs-details{
+        grid-template-columns: 1fr;
+    }
+    .item-content{
+        grid-template-columns: repeat(6, 1fr);
+    }
+    .item-content__name{
+        grid-column: 1/7;
+    }
+    .item-content__qty, .item-content__price, .item-content__total{
+        grid-row: 2/3;
+    }
+    .item-content__qty{
+        grid-column: 1/2;
+    }
+    .item-content__price{
+        grid-column: 2/4;
+    }
+    .item-content__total{
+        grid-column: 4/6;
+    }
+    .draft-btn{
+        display: none;
     }
 }

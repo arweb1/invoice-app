@@ -70,7 +70,7 @@ function NewInvoiceForm() {
   })
 
   const onSubmit = async (values, actions) => {
-    dispatch(addInvoice({...values, status: selectedStatus}))
+    dispatch(addInvoice({ ...values, status: selectedStatus }))
     actions.resetForm()
   }
 
@@ -127,79 +127,74 @@ function NewInvoiceForm() {
   if (isFormVisible) {
     return (
       <div className='newInvoiceForm' autoComplete="off">
-
         <form className="form" onSubmit={handleSubmit}>
-          <div className="billFrom">
-            <h2 className='title'>New Invoice</h2>
-            <div>
-              <h4>Bill From</h4>
-              <div className="inputs-fullWidth">
-                <div className="input-title">
-                  <label htmlFor="billFromStreet" className='label'>Street Adress</label>
-                  {errors.billFromStreet && touched.billFromStreet && <p className='error'>{errors.billFromStreet}</p>}
-                </div>
-                <input
-                  className={`input input-fullWidth ${errors.billFromStreet && touched.billFromStreet ? 'input-error' : ''}`}
-                  id="billFromStreet"
-                  name="billFromStreet"
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.billFromStreet}
-                />
+          <div className="title">New Invoice</div>
+          <div className="inputs-grid billfrom">
+            <h4>Bill From</h4>
+            <div className="inputs-fullWidth">
+              <div className="input-title">
+                <label htmlFor="billFromStreet" className='label'>Street Adress</label>
+                {errors.billFromStreet && touched.billFromStreet && <p className='error'>{errors.billFromStreet}</p>}
               </div>
+              <input
+                className={`input input-fullWidth ${errors.billFromStreet && touched.billFromStreet ? 'input-error' : ''}`}
+                id="billFromStreet"
+                name="billFromStreet"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billFromStreet}
+              />
             </div>
-            <div className="details">
-              <div>
-                <div className="input-title">
-                  <label htmlFor="billFromCity" className='label'>City</label>
-                  {errors.billFromCity && touched.billFromCity && <p className='error'>{errors.billFromCity}</p>}
-                </div>
-                <input
-                  className={`input ${errors.billFromCity && touched.billFromCity ? 'input-error' : ''}`}
-                  id="billFromCity"
-                  name="billFromCity"
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.billFromCity}
-                />
+            <div className='bill-from-city'>
+              <div className="input-title">
+                <label htmlFor="billFromCity" className='label'>City</label>
+                {errors.billFromCity && touched.billFromCity && <p className='error'>{errors.billFromCity}</p>}
               </div>
-              <div>
-                <div className="input-title">
-                  <label htmlFor="billFromPostCode" className='label'>Post Code</label>
-                  {errors.billFromPostCode && touched.billFromPostCode && <p className='error'>{errors.billFromPostCode}</p>}
-                </div>
-                <input
-                  className={`input ${errors.billFromPostCode && touched.billFromPostCode ? 'input-error' : ''}`}
-                  id="billFromPostCode"
-                  name="billFromPostCode"
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.billFromPostCode}
-                />
+              <input
+                className={`input ${errors.billFromCity && touched.billFromCity ? 'input-error' : ''}`}
+                id="billFromCity"
+                name="billFromCity"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billFromCity}
+              />
+            </div>
+            <div className='bill-from-postCode'>
+              <div className="input-title">
+                <label htmlFor="billFromPostCode" className='label'>Post Code</label>
+                {errors.billFromPostCode && touched.billFromPostCode && <p className='error'>{errors.billFromPostCode}</p>}
               </div>
-              <div>
-                <div className="input-title">
-                  <label htmlFor="billFromCountry" className='label'>Country</label>
-                  {errors.billFromCountry && touched.billFromCountry && <p className='error'>{errors.billFromCountry}</p>}
-                </div>
-                <input
-                  className={`input ${errors.billFromCountry && touched.billFromCountry ? 'input-error' : ''}`}
-                  id="billFromCountry"
-                  name="billFromCountry"
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.billFromCountry}
-                />
+              <input
+                className={`input ${errors.billFromPostCode && touched.billFromPostCode ? 'input-error' : ''}`}
+                id="billFromPostCode"
+                name="billFromPostCode"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billFromPostCode}
+              />
+            </div>
+            <div className='bill-from-country'>
+              <div className="input-title">
+                <label htmlFor="billFromCountry" className='label'>Country</label>
+                {errors.billFromCountry && touched.billFromCountry && <p className='error'>{errors.billFromCountry}</p>}
               </div>
+              <input
+                className={`input ${errors.billFromCountry && touched.billFromCountry ? 'input-error' : ''}`}
+                id="billFromCountry"
+                name="billFromCountry"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billFromCountry}
+              />
             </div>
           </div>
-          <div className="billTo">
+          <div className="inputs-grid billTo">
             <h4>Bill To</h4>
-            <div className='inputs-fullWidth'>
+            <div className="bill-to-name">
               <div className="input-title">
                 <label htmlFor="billToClientsName" className='label'>Client’s Name</label>
                 {errors.billToClientsName && touched.billToClientsName && <p className='error'>{errors.billToClientsName}</p>}
@@ -213,6 +208,8 @@ function NewInvoiceForm() {
                 onBlur={handleBlur}
                 value={values.billToClientsName}
               />
+            </div>
+            <div className="bill-to-email">
               <div className="input-title">
                 <label htmlFor="billToClientsEmail" className='label'>Client’s Email</label>
                 {errors.billToClientsEmail && touched.billToClientsEmail && <p className='error'>{errors.billToClientsEmail}</p>}
@@ -226,6 +223,8 @@ function NewInvoiceForm() {
                 onBlur={handleBlur}
                 value={values.billToClientsEmail}
               />
+            </div>
+            <div className="bill-to-street">
               <div className="input-title">
                 <label htmlFor="billToStreetAdress" className='label'>Street Adress</label>
                 {errors.billToStreetAdress && touched.billToStreetAdress && <p className='error'>{errors.billToStreetAdress}</p>}
@@ -240,55 +239,53 @@ function NewInvoiceForm() {
                 value={values.billToStreetAdress}
               />
             </div>
-            <div className="details">
-              <div>
-                <div className="input-title">
-                  <label htmlFor="billToCity" className='label'>City</label>
-                  {errors.billToCity && touched.billToCity && <p className='error'>{errors.billToCity}</p>}
-                </div>
-                <input
-                  className={`input ${errors.billToCity && touched.billToCity ? 'input-error' : ''}`}
-                  id="billToCity"
-                  name="billToCity"
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.billToCity}
-                />
+            <div className='bill-to-city'>
+              <div className="input-title">
+                <label htmlFor="billToCity" className='label'>City</label>
+                {errors.billToCity && touched.billToCity && <p className='error'>{errors.billToCity}</p>}
               </div>
-              <div>
-                <div className="input-title">
-                  <label htmlFor="billToPostCode" className='label'>Post Code</label>
-                  {errors.billToPostCode && touched.billToPostCode && <p className='error'>{errors.billToPostCode}</p>}
-                </div>
-                <input
-                  className={`input ${errors.billToPostCode && touched.billToPostCode ? 'input-error' : ''}`}
-                  id="billToPostCode"
-                  name="billToPostCode"
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.billToPostCode}
-                />
+              <input
+                className={`input ${errors.billToCity && touched.billToCity ? 'input-error' : ''}`}
+                id="billToCity"
+                name="billToCity"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billToCity}
+              />
+            </div>
+            <div className='bill-to-postCode'>
+              <div className="input-title">
+                <label htmlFor="billToPostCode" className='label'>Post Code</label>
+                {errors.billToPostCode && touched.billToPostCode && <p className='error'>{errors.billToPostCode}</p>}
               </div>
-              <div>
-                <div className="input-title">
-                  <label htmlFor="billToCountry" className='label'>Country</label>
-                  {errors.billToCountry && touched.billToCountry && <p className='error'>{errors.billToCountry}</p>}
-                </div>
-                <input
-                  className={`input ${errors.billToCountry && touched.billToCountry ? 'input-error' : ''}`}
-                  id="billToCountry"
-                  name="billToCountry"
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.billToCountry}
-                />
+              <input
+                className={`input ${errors.billToPostCode && touched.billToPostCode ? 'input-error' : ''}`}
+                id="billToPostCode"
+                name="billToPostCode"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billToPostCode}
+              />
+            </div>
+            <div className='bill-to-country'>
+              <div className="input-title">
+                <label htmlFor="billToCountry" className='label'>Country</label>
+                {errors.billToCountry && touched.billToCountry && <p className='error'>{errors.billToCountry}</p>}
               </div>
+              <input
+                className={`input ${errors.billToCountry && touched.billToCountry ? 'input-error' : ''}`}
+                id="billToCountry"
+                name="billToCountry"
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.billToCountry}
+              />
             </div>
           </div>
-          <div className="dates">
+          <div className="inputs-details">
             <div>
               <div className="input-title">
                 <label htmlFor="date" className='label'>Invoice Date</label>
@@ -397,7 +394,7 @@ function NewInvoiceForm() {
             <div className="btns__container-content">
               <button type="button" className='button light' onClick={() => dispatch(hideForm())}>Discard</button>
               <div className="">
-                <button type="submit" className='button dark' onClick={() => handleStatusChange('Draft')}>Save as Draft</button>
+                <button type="submit" className='button dark draft-btn' onClick={() => handleStatusChange('Draft')}>Save as Draft</button>
                 <button type="submit" className='button purple' onClick={() => handleStatusChange('Pending')}>Save & Send</button>
               </div>
             </div>
