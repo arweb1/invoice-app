@@ -1,80 +1,92 @@
 @import url('../../styles/styles.scss');
 
-.container{
+.container {
     margin: 0 auto;
     width: 100%;
 }
-.full-info_wrapper{
+
+.full-info_wrapper {
     margin-top: 65px;
 }
-.goBack-button{
-    button::before{
+
+.goBack-button {
+    button::before {
         content: url('../../assets/icon-arrow-left.svg');
         width: 9px;
         height: 5px;
-        display: inline-block; /* Добавьте этот стиль, чтобы ::before отобразился */
+        display: inline-block;
+        /* Добавьте этот стиль, чтобы ::before отобразился */
         margin-right: 23px;
     }
-    button{
+
+    button {
         font-size: 15px;
         font-weight: 700;
-        line-height: 15px; /* 100% */
+        line-height: 15px;
+        /* 100% */
         letter-spacing: -0.25px;
-        margin-bottom: 30px; 
+        margin-bottom: 30px;
 
         #light & {
-            color:#0C0E16;
+            color: #0C0E16;
         }
+
         #dark & {
             color: #888EB0;
         }
     }
 }
 
-.invoice-header{
+.invoice-header {
     background-color: #fff;
     box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
     border-radius: 8px;
     padding: 24px 32px;
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     align-items: center;
 
     #light & {
         background-color: #fff;
     }
+
     #dark & {
         background-color: #1E2139;
     }
 
-    .status{
+    .status {
         display: flex;
         align-items: center;
         gap: 20px;
-        .satus-title{
+
+        .satus-title {
             #light & {
-                color:#0C0E16;
+                color: #0C0E16;
             }
+
             #dark & {
                 color: #DFE3FA;
             }
         }
-        .draft{
+
+        .draft {
             #dark & {
                 background-color: rgba(223, 227, 250, 0.0571);
-                p{
+
+                p {
                     color: #DFE3FA;
-                    &::before{
+
+                    &::before {
                         background-color: #DFE3FA;
                     }
                 }
             }
         }
     }
-    
+
 }
 
-.full-info{
+.full-info {
     margin-top: 24px;
     margin-bottom: 54px;
     padding: 48px 50px;
@@ -83,84 +95,102 @@
     #light & {
         background: #FFF;
     }
+
     #dark & {
         background: #1E2139;
     }
+
     box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
 
-    .id{
+    .id {
         #light & {
-            color:#0C0E16;
+            color: #0C0E16;
         }
+
         #dark & {
             color: #DFE3FA;
         }
+
         color: #0C0E16;
         font-size: 15px;
         font-weight: 700;
         line-height: 24px;
         text-transform: uppercase;
-        span{
+
+        span {
             color: #888EB0;
         }
     }
 }
-.containerTitle{
+
+.containerTitle {
     #light & {
-        color:#7E88C3;
+        color: #7E88C3;
     }
+
     #dark & {
         color: #DFE3FA;
     }
+
     font-weight: 500;
     font-size: 13px;
-    margin-bottom: 13px; 
+    margin-bottom: 13px;
     line-height: 18px;
     letter-spacing: -0.1px;
-} 
-.full-info-header{
-    display: grid;  
+}
+
+.full-info-header {
+    display: grid;
     grid-template: repeat(3, auto)/repeat(6, 1fr);
 
-    .right-side{
+    .right-side {
         grid-row: 1/2;
         grid-column: -2/-1;
         text-align: right;
     }
-    .invoice-date-container{
+
+    .invoice-date-container {
         grid-row: 2/3;
     }
-    .payment-due-container{
+
+    .payment-due-container {
         grid-row: -2/-1;
     }
-    .bill-to-container{
+
+    .bill-to-container {
         grid-row: 2/4;
         grid-column: 3/4;
     }
-    .sent-to-container{
+
+    .sent-to-container {
         grid-row: 2/3;
         grid-column: 5/6;
     }
 }
 
-.bill-to-container{
+.bill-to-container {
     #light & {
-        color:#7E88C3;
+        color: #7E88C3;
     }
+
     #dark & {
         color: #DFE3FA;
     }
+
     font-weight: 500;
     line-height: 18px;
     font-size: 13px;
 }
-.bold{
+
+.bold {
     #light & {
-        color:#0C0E16;
+        color: #0C0E16;
     }
+
     #dark & {
         color: #fff;
     }
+
     color: #0C0E16;
     font-weight: 700;
     line-height: 20px;
@@ -168,7 +198,7 @@
     font-size: 15px;
 }
 
-.btns-mobile{
+.btns-mobile {
     display: none;
     position: fixed;
     bottom: 0;
@@ -180,20 +210,93 @@
     width: 100%;
     padding: 20px;
     transition: none;
-    transform: translate(0, 0); /* Зафиксируем положение элемента */
+    transform: translate(0, 0);
+    /* Зафиксируем положение элемента */
+
+    #dark & {
+        background-color: #1E2139;
+    }
 }
 
-@media(max-width: 600px){
-	.btns-desktop{
+.price-qty {
+    display: none;
+}
+
+@media(max-width: 600px) {
+    .btns-desktop {
         display: none;
     }
-    .status{
+
+    .status {
         width: 100%;
         justify-content: space-between;
     }
-    .btns-mobile{
+
+    .btns-mobile {
         display: block;
         z-index: 10000;
         // position: fixed;
+    }
+
+    .full-info-header {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 14px;
+    }
+
+    .right-side {
+        grid-row: 2/3 !important;
+        grid-column: 1/2 !important;
+        text-align-last: left;
+    }
+
+    .invoice-date-container {
+        grid-row: 3/4 !important;
+        grid-column: 1/2 !important;
+    }
+
+    .payment-due-container {
+        grid-row: 4/5 !important;
+        grid-column: 1/2 !important;
+    }
+
+    .bill-to-container {
+        grid-column: 2/3 !important;
+    }
+
+    .sent-to-container {
+        grid-column: 1/2 !important;
+        grid-row: 6/7 !important;
+    }
+
+    .price-qty {
+        display: block;
+    }
+
+    .label-total,
+    .label-price,
+    .label-qty,
+    .label-name,
+    .price,
+    .qty {
+        display: none;
+    }
+
+    .total-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 24px!important;
+        row-gap: 24px;
+    }
+
+    .total-item {
+        grid-template-columns: 1fr 1fr !important;
+        row-gap: 8px;
+        margin-top: 0!important;
+    }
+
+    .total-price {
+        grid-row: 1/3 !important;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 }

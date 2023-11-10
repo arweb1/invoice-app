@@ -152,6 +152,7 @@ function InvoiceInfoPage() {
                     <p className='name bold-text'>{product}</p>
                     <p className='qty thin-text'>{productQty[index]}</p>
                     <p className='price thin-text'>{productPrice[index]}</p>
+                    <p className='price-qty thin-text'>{productQty[index]} x ${productPrice[index]}</p>
                     <p className='total-price bold-text'>$ {calculateItemTotal(productQty[index], productPrice[index])}</p>
                   </div>
                 ))}
